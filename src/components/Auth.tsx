@@ -93,9 +93,11 @@ export default function Auth() {
       </View>
       <View style={styles.verticallySpaced}>
         <AnimatedButton
-          title="Sign up"
+          title="Press Me"
           disabled={loading}
-          onPress={() => signUpWithEmail()}
+          onPress={() => {
+            console.log("Button pressed!");
+          }}
         />
       </View>
     </View>

@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, Pressable } from "react-native";
 import { palette, rounded, spacing } from "../theme";
+import { useSharedValue } from "react-native-reanimated";
 
 type ButtonProps = {
   title: string;
@@ -9,14 +10,20 @@ type ButtonProps = {
 };
 
 const AnimatedButton: FC<ButtonProps> = ({ title, onPress, disabled }) => {
+  const height = useSharedValue(24);
+
   return (
-    <TouchableOpacity
-      style={[styles.button, disabled && styles.disabled]}
+    <Pressable
+      style={({ pressed }) => [
+        styles.button,
+        pressed && styles.pressed,
+        disabled && styles.disabled,
+      ]}
       onPress={onPress}
       disabled={disabled}
     >
       <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -26,6 +33,9 @@ const styles = StyleSheet.create({
     padding: spacing.sm,
     borderRadius: rounded.sm,
     alignItems: "center",
+  },
+  pressed: {
+    backgroundColor: palette.blue[700],
   },
   disabled: {
     backgroundColor: palette.gray[400],
