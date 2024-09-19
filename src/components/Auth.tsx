@@ -8,6 +8,7 @@ import {
   TextInput,
 } from "react-native";
 import { supabase } from "../lib/supabase";
+import AnimatedButton from "./AnimatedButton";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -85,6 +86,13 @@ export default function Auth() {
       </View>
       <View style={styles.verticallySpaced}>
         <Button
+          title="Sign up"
+          disabled={loading}
+          onPress={() => signUpWithEmail()}
+        />
+      </View>
+      <View style={styles.verticallySpaced}>
+        <AnimatedButton
           title="Sign up"
           disabled={loading}
           onPress={() => signUpWithEmail()}

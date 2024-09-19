@@ -3,6 +3,9 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     // ! https://stackoverflow.com/questions/33117227/setting-environment-variable-in-react-native
-    plugins: ["transform-inline-environment-variables"],
+    plugins: [
+      "transform-inline-environment-variables",
+      "react-native-reanimated/plugin",
+    ],
   };
 };
