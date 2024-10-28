@@ -31,19 +31,19 @@ const AnimatedButton: FC<ButtonProps> = ({ title, onPress, disabled }) => {
 
 const stylesheet = createStyleSheet((theme) => ({
   button: {
-    backgroundColor: palette.blue[600],
+    backgroundColor: theme.colors.primary[500],
     padding: spacing.sm,
     borderRadius: rounded.sm,
     alignItems: "center",
   },
   pressed: {
-    backgroundColor: palette.blue[700],
+    backgroundColor: theme.colors.primary[700],
   },
   disabled: {
     backgroundColor: palette.gray[400],
   },
   buttonText: {
-    color: palette.gray[50],
+    color: theme.colors.typography,
     fontSize: 18,
   },
 }));

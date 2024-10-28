@@ -9,6 +9,11 @@ import {
 } from "react-native";
 import { supabase } from "../lib/supabase";
 import AnimatedButton from "./AnimatedButton";
+import {
+  createStyleSheet,
+  UnistylesRuntime,
+  useStyles,
+} from "react-native-unistyles";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -23,6 +28,8 @@ AppState.addEventListener("change", (state) => {
 });
 
 export default function Auth() {
+  const { styles } = useStyles(stylesheet);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -57,56 +64,69 @@ export default function Auth() {
   return (
     <View style={styles.container}>
       <View style={[styles.verticallySpaced, styles.mt20]}>
-        <TextInput
-          //   label="Email"
-          //   leftIcon={{ type: "font-awesome", name: "envelope" }}
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          placeholder="email@address.com"
-          autoCapitalize={"none"}
-        />
+        <View>
+          <TextInput
+            //   label="Email"
+            //   leftIcon={{ type: "font-awesome", name: "envelope" }}
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+            placeholder="email@address.com"
+            autoCapitalize={"none"}
+          />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <TextInput
+            //   label="Password"
+            //   leftIcon={{ type: "font-awesome", name: "lock" }}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry={true}
+            placeholder="Password"
+            autoCapitalize={"none"}
+          />
+        </View>
+        <View style={[styles.verticallySpaced, styles.mt20]}>
+          <Button
+            title="Sign in"
+            disabled={loading}
+            onPress={() => signInWithEmail()}
+          />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <Button
+            title="Sign up"
+            disabled={loading}
+            onPress={() => signUpWithEmail()}
+          />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <AnimatedButton
+            title="Press Me"
+            disabled={loading}
+            onPress={() => {
+              console.log("Button pressed!");
+            }}
+          />
+        </View>
       </View>
-      <View style={styles.verticallySpaced}>
-        <TextInput
-          //   label="Password"
-          //   leftIcon={{ type: "font-awesome", name: "lock" }}
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          secureTextEntry={true}
-          placeholder="Password"
-          autoCapitalize={"none"}
-        />
-      </View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Button
-          title="Sign in"
-          disabled={loading}
-          onPress={() => signInWithEmail()}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Button
-          title="Sign up"
-          disabled={loading}
-          onPress={() => signUpWithEmail()}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <AnimatedButton
-          title="Press Me"
-          disabled={loading}
-          onPress={() => {
-            console.log("Button pressed!");
-          }}
-        />
-      </View>
+      <Button
+        title="Toggle Theme"
+        onPress={() => {
+          UnistylesRuntime.setTheme(
+            UnistylesRuntime.themeName === "light" ? "dark" : "light"
+          );
+        }}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   container: {
-    marginTop: 40,
+    backgroundColor: theme.colors.background,
+    justifyContent: "space-between",
+    height: "100%",
+    paddingTop: 40,
     padding: 12,
   },
   verticallySpaced: {
@@ -117,4 +137,4 @@ const styles = StyleSheet.create({
   mt20: {
     marginTop: 20,
   },
-});
+}));
