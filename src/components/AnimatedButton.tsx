@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
 import { palette, rounded, spacing } from "../theme";
 import { useSharedValue } from "react-native-reanimated";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type ButtonProps = {
   title: string;
@@ -10,7 +11,8 @@ type ButtonProps = {
 };
 
 const AnimatedButton: FC<ButtonProps> = ({ title, onPress, disabled }) => {
-  const height = useSharedValue(24);
+  const { styles } = useStyles(stylesheet);
+  // const height = useSharedValue(24);
 
   return (
     <Pressable
@@ -27,7 +29,7 @@ const AnimatedButton: FC<ButtonProps> = ({ title, onPress, disabled }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   button: {
     backgroundColor: palette.blue[600],
     padding: spacing.sm,
@@ -44,6 +46,6 @@ const styles = StyleSheet.create({
     color: palette.gray[50],
     fontSize: 18,
   },
-});
+}));
 
 export default AnimatedButton;
