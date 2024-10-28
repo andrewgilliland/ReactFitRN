@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Text, TouchableOpacity, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable } from "react-native";
 import { palette, rounded, spacing } from "../theme";
 import { useSharedValue } from "react-native-reanimated";
 
