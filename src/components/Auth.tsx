@@ -63,7 +63,7 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+      <View style={[styles.verticallySpaced, styles["mt-5"]]}>
         <View>
           <TextInput
             //   label="Email"
@@ -109,14 +109,16 @@ export default function Auth() {
           />
         </View>
       </View>
-      <Button
-        title="Toggle Theme"
-        onPress={() => {
-          UnistylesRuntime.setTheme(
-            UnistylesRuntime.themeName === "light" ? "dark" : "light"
-          );
-        }}
-      />
+      <View style={styles["mb-5"]}>
+        <Button
+          title="Toggle Theme"
+          onPress={() => {
+            UnistylesRuntime.setTheme(
+              UnistylesRuntime.themeName === "light" ? "dark" : "light"
+            );
+          }}
+        />
+      </View>
     </View>
   );
 }
@@ -134,7 +136,10 @@ const stylesheet = createStyleSheet((theme) => ({
     paddingBottom: 4,
     alignSelf: "stretch",
   },
-  mt20: {
+  "mt-5": {
     marginTop: 20,
+  },
+  "mb-5": {
+    marginBottom: 20,
   },
 }));
