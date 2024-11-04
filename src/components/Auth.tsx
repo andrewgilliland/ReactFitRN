@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Alert,
-  StyleSheet,
-  View,
-  AppState,
-  Button,
-  TextInput,
-} from "react-native";
+import { Alert, View, AppState, Button, TextInput } from "react-native";
 import { supabase } from "../lib/supabase";
 import AnimatedButton from "./AnimatedButton";
 import {
@@ -85,7 +78,7 @@ export default function Auth() {
             autoCapitalize={"none"}
           />
         </View>
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        <View style={[styles.verticallySpaced, styles["mt-5"]]}>
           <Button
             title="Sign in"
             disabled={loading}
