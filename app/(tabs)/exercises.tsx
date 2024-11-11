@@ -1,5 +1,7 @@
-import { SafeAreaView, Text, ScrollView, View } from "react-native";
+import { SafeAreaView, Text, TextInput, View } from "react-native";
 import "@/src/style/unistyles";
+import ExerciseList from "@/src/components/ExerciseList";
+import IconInput from "@/src/components/IconInput";
 
 export default function ExercisesScreen() {
   const exercises = [
@@ -62,7 +64,8 @@ export default function ExercisesScreen() {
       <View
         style={{
           borderWidth: 1,
-          padding: 24,
+          paddingHorizontal: 36,
+          paddingVertical: 24,
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
@@ -78,42 +81,8 @@ export default function ExercisesScreen() {
           }}
         />
       </View>
-      <ScrollView style={{ paddingHorizontal: 24 }}>
-        {exercises.map((exercise) => (
-          <View
-            key={exercise.name}
-            style={{
-              borderTopWidth: 1,
-              padding: 12,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-
-                gap: 12,
-              }}
-            >
-              <Text style={{ fontSize: 24 }}>{exercise.icon}</Text>
-              <View>
-                <Text style={{ fontSize: 18 }}>{exercise.name}</Text>
-                <Text>{exercise.description}</Text>
-              </View>
-            </View>
-            <View
-              style={{
-                height: 24,
-                width: 24,
-                backgroundColor: "purple",
-                borderRadius: 4,
-              }}
-            />
-          </View>
-        ))}
-      </ScrollView>
+      <IconInput icon="💪" placeholder="Search Exercises" value="Search" />
+      <ExerciseList exercises={exercises} />
     </SafeAreaView>
   );
 }
