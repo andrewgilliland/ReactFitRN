@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Text, StyleSheet, Pressable } from "react-native";
-import { palette, rounded, spacing } from "../theme";
+import { colors, rounded, spacing } from "../theme";
 import { useSharedValue } from "react-native-reanimated";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -40,7 +40,7 @@ const stylesheet = createStyleSheet((theme) => ({
     backgroundColor: theme.colors.primary[700],
   },
   disabled: {
-    backgroundColor: palette.gray[400],
+    backgroundColor: colors.gray[400],
   },
   buttonText: {
     color: theme.colors.typography,
