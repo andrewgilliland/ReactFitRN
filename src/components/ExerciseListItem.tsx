@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Text, View } from "react-native";
-import { spacing } from "../theme";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type ExerciseListItemProps = {
@@ -36,10 +35,11 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, spacing }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing, rounded }) => ({
   container: {
     backgroundColor: colors.gray[50],
-    borderTopWidth: 1,
+    borderTopWidth: spacing[0.5],
+    borderColor: colors.gray[200],
     padding: spacing[3],
     flexDirection: "row",
     justifyContent: "space-between",
@@ -64,25 +64,8 @@ const stylesheet = createStyleSheet(({ colors, spacing }) => ({
     height: spacing[6],
     width: spacing[6],
     backgroundColor: colors.red[600],
-    borderRadius: 4,
+    borderRadius: rounded.md,
   },
-
-  //   button: {
-  //     backgroundColor: theme.colors.primary[500],
-  //     padding: spacing.sm,
-  //     borderRadius: rounded.sm,
-  //     alignItems: "center",
-  //   },
-  //   pressed: {
-  //     backgroundColor: theme.colors.primary[700],
-  //   },
-  //   disabled: {
-  //     backgroundColor: palette.gray[400],
-  //   },
-  //   buttonText: {
-  //     color: theme.colors.typography,
-  //     fontSize: 18,
-  //   },
 }));
 
 export default ExerciseListItem;
