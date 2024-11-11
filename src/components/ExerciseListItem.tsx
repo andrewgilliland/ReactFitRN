@@ -35,7 +35,7 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, spacing, rounded }) => ({
+const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
   container: {
     backgroundColor: colors.gray[50],
     borderTopWidth: spacing[0.5],
@@ -50,10 +50,10 @@ const stylesheet = createStyleSheet(({ colors, spacing, rounded }) => ({
     gap: spacing[3],
   },
   icon: {
-    fontSize: 24,
+    fontSize: font["2xl"],
   },
   name: {
-    fontSize: 18,
+    fontSize: font.lg,
     fontWeight: "600",
     color: colors.gray[700],
   },
