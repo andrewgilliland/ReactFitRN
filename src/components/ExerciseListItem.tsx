@@ -36,18 +36,18 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing }) => ({
   container: {
     backgroundColor: colors.gray[50],
     borderTopWidth: 1,
-    padding: 12,
+    padding: spacing[3],
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
   innerContainer: {
     flexDirection: "row",
-    gap: spacing.md,
+    gap: spacing[3],
   },
   icon: {
     fontSize: 24,
@@ -61,8 +61,8 @@ const stylesheet = createStyleSheet(({ colors }) => ({
     color: colors.gray[500],
   },
   chevronRight: {
-    height: 24,
-    width: 24,
+    height: spacing[6],
+    width: spacing[6],
     backgroundColor: colors.red[600],
     borderRadius: 4,
   },
