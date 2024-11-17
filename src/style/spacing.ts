@@ -1,3 +1,4 @@
+// https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale
 export const spacing = {
   0: 0,
   0.5: 2,
