@@ -50,10 +50,10 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
     gap: spacing[3],
   },
   icon: {
-    fontSize: font["2xl"],
+    fontSize: font.size["2xl"],
   },
   name: {
-    fontSize: font.lg,
+    fontSize: font.size.lg,
     fontWeight: "600",
     color: colors.gray[700],
   },
@@ -63,7 +63,7 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
   chevronRight: {
     height: spacing[6],
     width: spacing[6],
-    backgroundColor: colors.red[600],
+    backgroundColor: colors.red[500],
     borderRadius: rounded.md,
   },
 }));
