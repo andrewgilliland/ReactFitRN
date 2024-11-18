@@ -4,6 +4,7 @@ import IconInput from "@/src/components/Inputs/IconInput";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { useState } from "react";
 
 export default function ExercisesScreen() {
   const {
@@ -15,6 +16,8 @@ export default function ExercisesScreen() {
       searchInputIcon,
     },
   } = useStyles(stylesheet);
+
+  const searchValueState = useState("");
 
   const exercises = [
     { name: "Push-ups", description: "Great for chest and arms", icon: "💪" },
@@ -71,6 +74,10 @@ export default function ExercisesScreen() {
     },
   ];
 
+  const filteredExercises = exercises.filter((exercise) =>
+    exercise.name.toLowerCase().includes(searchValueState[0].toLowerCase())
+  );
+
   return (
     <SafeAreaView>
       <View style={headerContainer}>
@@ -87,10 +94,10 @@ export default function ExercisesScreen() {
             <Feather size={18} name="search" color={searchInputIcon.color} />
           }
           placeholder="Search Exercises"
-          value="Search"
+          valueState={searchValueState}
         />
       </View>
-      <ExerciseList exercises={exercises} />
+      <ExerciseList exercises={filteredExercises} />
     </SafeAreaView>
   );
 }

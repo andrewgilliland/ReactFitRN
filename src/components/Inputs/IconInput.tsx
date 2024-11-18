@@ -5,12 +5,15 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 type IconInputProps = {
   icon: ReactElement;
   placeholder?: string;
-  value: string;
+
+  valueState: [string, React.Dispatch<React.SetStateAction<string>>];
 };
 
-const IconInput: FC<IconInputProps> = ({ icon, placeholder, value }) => {
+const IconInput: FC<IconInputProps> = ({ icon, placeholder, valueState }) => {
+  const [value, setValue] = valueState;
+
   const {
-    styles: { container, iconStyle, placeholderStyle, inputStyle },
+    styles: { container, placeholderStyle, inputStyle },
   } = useStyles(stylesheet);
 
   return (
@@ -20,6 +23,8 @@ const IconInput: FC<IconInputProps> = ({ icon, placeholder, value }) => {
         placeholder={placeholder}
         placeholderTextColor={placeholderStyle.color}
         style={inputStyle}
+        value={value}
+        onChange={(e) => setValue(e.nativeEvent.text)}
       />
     </View>
   );
@@ -35,12 +40,7 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
-  iconStyle: {
-    height: 24,
-    width: 24,
-    backgroundColor: colors.purple[600],
-    borderRadius: 4,
-  },
+
   inputStyle: {
     fontSize: 16,
     flex: 1,
