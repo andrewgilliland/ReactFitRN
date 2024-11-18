@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Text, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Feather from "@expo/vector-icons/Feather";
+import { Link } from "expo-router";
 
 type ExerciseListItemProps = {
   exercise: any;
@@ -31,12 +32,14 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
           <Text style={description}>{exercise.description}</Text>
         </View>
       </View>
-      <Feather
-        name="chevron-right"
-        size={24}
-        color={chevronRight.color}
-        onPress={() => console.log("pressed")}
-      />
+      <Link href={"/exercises/[id]"}>
+        <Feather
+          name="chevron-right"
+          size={24}
+          color={chevronRight.color}
+          onPress={() => console.log("pressed")}
+        />
+      </Link>
     </View>
   );
 };
