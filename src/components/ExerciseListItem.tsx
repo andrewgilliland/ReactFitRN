@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Text, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import Feather from "@expo/vector-icons/Feather";
 
 type ExerciseListItemProps = {
   exercise: any;
@@ -30,7 +31,12 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
           <Text style={description}>{exercise.description}</Text>
         </View>
       </View>
-      <View style={chevronRight} />
+      <Feather
+        name="chevron-right"
+        size={24}
+        color={chevronRight.color}
+        onPress={() => console.log("pressed")}
+      />
     </View>
   );
 };
@@ -61,10 +67,7 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
     color: colors.gray[500],
   },
   chevronRight: {
-    height: spacing[6],
-    width: spacing[6],
-    backgroundColor: colors.red[500],
-    borderRadius: rounded.md,
+    color: colors.gray[500],
   },
 }));
 

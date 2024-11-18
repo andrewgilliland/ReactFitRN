@@ -1,8 +1,9 @@
 import { SafeAreaView, Text, View } from "react-native";
-import "@/src/style/unistyles";
 import ExerciseList from "@/src/components/ExerciseList";
 import IconInput from "@/src/components/Inputs/IconInput";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import Feather from "@expo/vector-icons/Feather";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function ExercisesScreen() {
   const {
@@ -11,6 +12,7 @@ export default function ExercisesScreen() {
       screenHeading,
       headerIcon,
       searchInputContainer,
+      searchInputIcon,
     },
   } = useStyles(stylesheet);
 
@@ -73,10 +75,20 @@ export default function ExercisesScreen() {
     <SafeAreaView>
       <View style={headerContainer}>
         <Text style={screenHeading}>Exercises</Text>
-        <View style={headerIcon} />
+        <MaterialCommunityIcons
+          size={24}
+          name="weight-lifter"
+          color={headerIcon.color}
+        />
       </View>
       <View style={searchInputContainer}>
-        <IconInput icon="💪" placeholder="Search Exercises" value="Search" />
+        <IconInput
+          icon={
+            <Feather size={18} name="search" color={searchInputIcon.color} />
+          }
+          placeholder="Search Exercises"
+          value="Search"
+        />
       </View>
       <ExerciseList exercises={exercises} />
     </SafeAreaView>
@@ -93,18 +105,19 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
     alignItems: "center",
   },
   screenHeading: {
+    color: colors.gray[800],
     fontSize: font.size["2xl"],
     fontWeight: "600",
   },
   headerIcon: {
-    height: 24,
-    width: 24,
-    backgroundColor: colors.purple[600],
-    borderRadius: rounded.sm,
+    color: colors.gray[800],
   },
   searchInputContainer: {
     borderBottomWidth: 1,
     paddingHorizontal: 36,
     paddingVertical: 16,
+  },
+  searchInputIcon: {
+    color: colors.gray[500],
   },
 }));

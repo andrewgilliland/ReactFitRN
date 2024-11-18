@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 import { TextInput, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type IconInputProps = {
-  icon: string;
+  icon: ReactElement;
   placeholder?: string;
   value: string;
 };
@@ -15,7 +15,7 @@ const IconInput: FC<IconInputProps> = ({ icon, placeholder, value }) => {
 
   return (
     <View style={container}>
-      <View style={iconStyle} />
+      {icon}
       <TextInput
         placeholder={placeholder}
         placeholderTextColor={placeholderStyle.color}
