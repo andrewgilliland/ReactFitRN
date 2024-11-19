@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Text, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Feather from "@expo/vector-icons/Feather";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link } from "expo-router";
 
 type ExerciseListItemProps = {
@@ -23,22 +25,26 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
     },
   } = useStyles(stylesheet);
 
+  const exerciseTypeIcon = {
+    strength: (
+      <MaterialCommunityIcons name="arm-flex" size={24} color={icon.color} />
+    ),
+    cardio: <FontAwesome name="heartbeat" size={24} color={icon.color} />,
+  };
+
   return (
     <View style={container}>
       <View style={innerContainer}>
-        <Text style={icon}>{exercise.icon}</Text>
+        <Text>
+          {exerciseTypeIcon[exercise.type as keyof typeof exerciseTypeIcon]}
+        </Text>
         <View>
           <Text style={name}>{exercise.name}</Text>
           <Text style={description}>{exercise.description}</Text>
         </View>
       </View>
-      <Link href={"/exercises/[id]"}>
-        <Feather
-          name="chevron-right"
-          size={24}
-          color={chevronRight.color}
-          onPress={() => console.log("pressed")}
-        />
+      <Link href={`/${exercise.name}`}>
+        <Feather name="chevron-right" size={24} color={chevronRight.color} />
       </Link>
     </View>
   );
@@ -59,7 +65,7 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
     gap: spacing[3],
   },
   icon: {
-    fontSize: font.size["2xl"],
+    color: colors.gray[800],
   },
   name: {
     fontSize: font.size.lg,

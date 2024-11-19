@@ -20,57 +20,83 @@ export default function ExercisesScreen() {
   const searchValueState = useState("");
 
   const exercises = [
-    { name: "Push-ups", description: "Great for chest and arms", icon: "💪" },
-    { name: "Squats", description: "Builds lower body strength", icon: "🦵" },
+    {
+      name: "Push-ups",
+      description: "Great for chest and arms",
+      icon: "💪",
+      type: "strength",
+    },
+    {
+      name: "Squats",
+      description: "Builds lower body strength",
+      icon: "🦵",
+      type: "strength",
+    },
     {
       name: "Plank",
       description: "Strengthens core and improves posture",
       icon: "🧘",
+      type: "strength",
     },
     {
       name: "Lunges",
       description: "Targets legs and improves balance",
       icon: "🏃",
+      type: "strength",
     },
     {
       name: "Burpees",
       description: "Full body workout, great for cardio",
       icon: "🏋️",
+      type: "strength",
     },
     {
       name: "Mountain Climbers",
       description: "Cardio and core strength",
       icon: "🏔️",
+      type: "strength",
     },
     {
       name: "Jumping Jacks",
       description: "Simple but effective cardio",
       icon: "🤸",
+      type: "cardio",
     },
     {
       name: "Bicycle Crunches",
       description: "Targets abs and obliques",
       icon: "🚴",
+      type: "strength",
     },
     {
       name: "Leg Raises",
       description: "Strengthens lower abs",
       icon: "🦵",
+      type: "strength",
     },
     {
       name: "Russian Twists",
       description: "Targets obliques and core",
       icon: "🇷🇺",
+      type: "strength",
     },
     {
       name: "Superman",
       description: "Strengthens lower back and glutes",
       icon: "🦸",
+      type: "strength",
     },
     {
       name: "Bridge",
       description: "Strengthens glutes and lower back",
       icon: "🌉",
+      type: "strength",
+    },
+    {
+      name: "Jump Rope",
+      description: "Great cardio workout",
+      icon: "🏃",
+      type: "cardio",
     },
   ];
 
