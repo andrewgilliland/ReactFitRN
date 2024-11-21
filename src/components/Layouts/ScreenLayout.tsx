@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { ComponentProps, FC, ReactNode, useState } from "react";
 import { SafeAreaView, Text, View } from "react-native";
 import IconInput from "@/src/components/Inputs/IconInput";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -7,7 +7,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 type ScreenLayoutProps = {
   title: string;
-  icon: string;
+  icon: ComponentProps<typeof MaterialCommunityIcons>["name"];
   children: ReactNode;
 };
 
