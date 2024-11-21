@@ -9,7 +9,10 @@ type ExerciseListProps = {
 
 const ExerciseList: FC<ExerciseListProps> = ({ exercises }) => {
   return (
-    <ScrollView style={{ paddingHorizontal: 24 }}>
+    <ScrollView
+      contentContainerStyle={{ paddingBottom: 150 }} // Adjust paddingBottom to account for tab navigator
+      style={{ paddingHorizontal: 24 }}
+    >
       {exercises.map((exercise, index) => (
         <ExerciseListItem key={index} exercise={exercise} />
       ))}
