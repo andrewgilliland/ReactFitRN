@@ -8,12 +8,16 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 type ScreenLayoutProps = {
   title: string;
   icon: ComponentProps<typeof MaterialCommunityIcons>["name"];
+  searchValueState: [string, React.Dispatch<React.SetStateAction<string>>];
   children: ReactNode;
 };
 
-const ScreenLayout: FC<ScreenLayoutProps> = ({ title, icon, children }) => {
-  const searchValueState = useState("");
-
+const ScreenLayout: FC<ScreenLayoutProps> = ({
+  title,
+  icon,
+  children,
+  searchValueState,
+}) => {
   const {
     styles: {
       container,
