@@ -55,34 +55,37 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
-  container: {
-    backgroundColor: colors.gray[50],
-  },
-  headerContainer: {
-    borderWidth: 1,
-    paddingHorizontal: 36,
-    paddingVertical: 24,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  screenHeading: {
-    color: colors.gray[800],
-    fontSize: font.size["2xl"],
-    fontWeight: "600",
-  },
-  headerIcon: {
-    color: colors.gray[800],
-  },
-  searchInputContainer: {
-    borderBottomWidth: 1,
-    paddingHorizontal: 36,
-    paddingVertical: 16,
-  },
-  searchInputIcon: {
-    color: colors.gray[500],
-  },
-}));
+const stylesheet = createStyleSheet(
+  ({ colors, font, spacing, rounded, name }) => ({
+    container: {
+      backgroundColor: name === "dark" ? colors.black : colors.gray[50],
+    },
+    headerContainer: {
+      borderWidth: 1,
+      paddingHorizontal: 36,
+      paddingVertical: 24,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    screenHeading: {
+      color: name === "dark" ? colors.white : colors.gray[800],
+      fontSize: font.size["2xl"],
+      fontWeight: "600",
+    },
+    headerIcon: {
+      color: name === "dark" ? colors.white : colors.gray[800],
+    },
+    searchInputContainer: {
+      borderColor: name === "dark" ? colors.purple[400] : colors.gray[300],
+      borderBottomWidth: 1,
+      paddingHorizontal: 36,
+      paddingVertical: 16,
+    },
+    searchInputIcon: {
+      color: colors.gray[500],
+    },
+  })
+);
 
 export default ScreenLayout;

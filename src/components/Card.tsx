@@ -21,20 +21,23 @@ const Card: FC<CardProps> = ({ item }) => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
-  container: {
-    backgroundColor: colors.amber[500],
-    borderWidth: 1,
-    borderRadius: rounded.lg,
-    height: spacing[24],
-    width: spacing[24],
-    padding: spacing[3],
-    marginRight: spacing[3],
-  },
-  text: {
-    fontWeight: "bold",
-    fontSize: font.size.base,
-  },
-}));
+const stylesheet = createStyleSheet(
+  ({ colors, font, spacing, rounded, name }) => ({
+    container: {
+      backgroundColor: colors.amber[600],
+      borderWidth: 1,
+      borderRadius: rounded.lg,
+      height: spacing[24],
+      width: spacing[24],
+      padding: spacing[3],
+      marginRight: spacing[3],
+    },
+    text: {
+      color: name === "dark" ? colors.white : colors.black,
+      fontWeight: "bold",
+      fontSize: font.size.base,
+    },
+  })
+);
 
 export default Card;

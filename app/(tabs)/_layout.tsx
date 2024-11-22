@@ -2,10 +2,23 @@ import { Tabs } from "expo-router";
 import React from "react";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { colors } from "@/src/style/colors";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const TabsLayout = () => {
+  const {
+    styles: { tabBar },
+  } = useStyles(stylesheet);
+
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: colors.purple[500] }}>
+    <Tabs
+      // sceneContainerStyle={{ backgroundColor: colors.black }}
+      screenOptions={{
+        tabBarActiveTintColor: colors.purple[500],
+        tabBarStyle: {
+          backgroundColor: tabBar.backgroundColor,
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -43,5 +56,11 @@ const TabsLayout = () => {
     </Tabs>
   );
 };
+
+const stylesheet = createStyleSheet(({ colors, name }) => ({
+  tabBar: {
+    backgroundColor: name === "dark" ? colors.black : colors.gray[50],
+  },
+}));
 
 export default TabsLayout;

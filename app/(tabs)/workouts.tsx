@@ -1,12 +1,14 @@
-import { ScrollView, Text, View } from "react-native";
-// import { createStyleSheet } from "react-native-unistyles";
-import ScreenLayout from "@/src/components/Layouts/ScreenLayout";
 import { useState } from "react";
-import Card from "@/src/components/Card";
-import { Workout, WorkoutDictionary } from "@/src/types";
+import { ScrollView } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
+import ScreenLayout from "@/src/components/Layouts/ScreenLayout";
 import CardRow from "@/src/components/CardRow";
+import { Workout, WorkoutDictionary } from "@/src/types";
 
 const WorkoutsScreen = () => {
+  const {
+    styles: { scrollView },
+  } = useStyles(stylesheet);
   const searchValueState = useState("");
 
   const workouts: Workout[] = [
@@ -77,7 +79,7 @@ const WorkoutsScreen = () => {
       title="Workouts"
       icon="dumbbell"
     >
-      <ScrollView>
+      <ScrollView style={scrollView}>
         {Object.entries(workoutsByType).map(([type, workouts]) => (
           <CardRow key={type} type={type} workouts={workouts} />
         ))}
@@ -86,31 +88,11 @@ const WorkoutsScreen = () => {
   );
 };
 
-// const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
-//   headerContainer: {
-//     borderWidth: 1,
-//     paddingHorizontal: 36,
-//     paddingVertical: 24,
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     alignItems: "center",
-//   },
-//   screenHeading: {
-//     color: colors.gray[800],
-//     fontSize: font.size["2xl"],
-//     fontWeight: "600",
-//   },
-//   headerIcon: {
-//     color: colors.gray[800],
-//   },
-//   searchInputContainer: {
-//     borderBottomWidth: 1,
-//     paddingHorizontal: 36,
-//     paddingVertical: 16,
-//   },
-//   searchInputIcon: {
-//     color: colors.gray[500],
-//   },
-// }));
+const stylesheet = createStyleSheet(({ colors, name }) => ({
+  scrollView: {
+    backgroundColor: name === "dark" ? colors.black : colors.gray[50],
+    height: "100%",
+  },
+}));
 
 export default WorkoutsScreen;
