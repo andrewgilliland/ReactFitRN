@@ -2,17 +2,9 @@ import { ScrollView, Text, View } from "react-native";
 // import { createStyleSheet } from "react-native-unistyles";
 import ScreenLayout from "@/src/components/Layouts/ScreenLayout";
 import { useState } from "react";
-
-type Workout = {
-  id: number;
-  title: string;
-  description: string;
-  type: string;
-};
-
-type WorkoutDictionary = {
-  [key: string]: Workout[];
-};
+import Card from "@/src/components/Card";
+import { Workout, WorkoutDictionary } from "@/src/types";
+import CardRow from "@/src/components/CardRow";
 
 const WorkoutsScreen = () => {
   const searchValueState = useState("");
@@ -79,38 +71,15 @@ const WorkoutsScreen = () => {
     {}
   );
 
-  console.log(workoutsByType);
-
   return (
     <ScreenLayout
       searchValueState={searchValueState}
       title="Workouts"
       icon="dumbbell"
     >
-      <ScrollView style={{ paddingHorizontal: 12 }}>
+      <ScrollView>
         {Object.entries(workoutsByType).map(([type, workouts]) => (
-          <ScrollView style={{ borderWidth: 1, marginVertical: 12 }} key={type}>
-            <Text style={{ fontSize: 22, fontWeight: "bold" }}>{type}</Text>
-            <ScrollView horizontal style={{ marginVertical: 12 }}>
-              {workouts.map((workout, index) => (
-                <View
-                  key={index}
-                  style={{
-                    borderWidth: 1,
-                    borderRadius: 12,
-                    height: 100,
-                    width: 100,
-                    padding: 12,
-                    marginRight: 12,
-                  }}
-                >
-                  <Text key={workout.id} style={{ fontWeight: "bold" }}>
-                    {workout.title}
-                  </Text>
-                </View>
-              ))}
-            </ScrollView>
-          </ScrollView>
+          <CardRow key={type} type={type} workouts={workouts} />
         ))}
       </ScrollView>
     </ScreenLayout>

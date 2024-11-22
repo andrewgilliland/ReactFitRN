@@ -14,6 +14,7 @@ export const lightTheme = {
     lg: 8,
     xl: 12,
   },
+  name: "light",
 } as const;
 
 export const darkTheme = {
@@ -27,6 +28,7 @@ export const darkTheme = {
     lg: 8,
     xl: 12,
   },
+  name: "dark",
 } as const;
 
 // define other themes
