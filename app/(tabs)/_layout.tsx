@@ -6,16 +6,18 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const TabsLayout = () => {
   const {
-    styles: { tabBar },
+    styles: { activeTint, tabBar },
   } = useStyles(stylesheet);
 
   return (
     <Tabs
       // sceneContainerStyle={{ backgroundColor: colors.black }}
       screenOptions={{
-        tabBarActiveTintColor: colors.purple[500],
+        tabBarActiveTintColor: activeTint.color,
         tabBarStyle: {
           backgroundColor: tabBar.backgroundColor,
+          borderTopColor: colors.purple[500],
+          borderTopWidth: 2,
         },
       }}
     >
@@ -58,6 +60,9 @@ const TabsLayout = () => {
 };
 
 const stylesheet = createStyleSheet(({ colors, name }) => ({
+  activeTint: {
+    color: name === "dark" ? colors.purple[600] : colors.purple[400],
+  },
   tabBar: {
     backgroundColor: name === "dark" ? colors.black : colors.gray[50],
   },
