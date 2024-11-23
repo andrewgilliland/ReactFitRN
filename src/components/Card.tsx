@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Text, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Workout } from "../types";
 
 type CardProps = {
@@ -9,7 +10,7 @@ type CardProps = {
 
 const Card: FC<CardProps> = ({ item }) => {
   const {
-    styles: { container, text },
+    styles: { container, text, icon },
   } = useStyles(stylesheet);
 
   return (
@@ -17,6 +18,7 @@ const Card: FC<CardProps> = ({ item }) => {
       <Text key={item.id} style={text}>
         {item.title}
       </Text>
+      <Ionicons name="fitness" size={48} color={icon.color} style={icon} />
     </View>
   );
 };
@@ -31,11 +33,19 @@ const stylesheet = createStyleSheet(
       width: spacing[24],
       padding: spacing[3],
       marginRight: spacing[3],
+      overflow: "hidden",
     },
     text: {
       color: name === "dark" ? colors.white : colors.black,
       fontWeight: "bold",
       fontSize: font.size.base,
+    },
+    icon: {
+      color: name === "dark" ? colors.white : colors.black,
+      opacity: 0.25,
+      position: "absolute",
+      right: 0,
+      bottom: 0,
     },
   })
 );
