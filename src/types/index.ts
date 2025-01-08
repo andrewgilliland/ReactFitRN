@@ -1,3 +1,5 @@
+export { ExerciseType } from "./Exercise";
+
 export type Workout = {
   id: number;
   title: string;
