@@ -1,20 +1,22 @@
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import "@/src/style/unistyles";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-export default function App() {
+const HomeScreen = () => {
   const {
     styles: { container, quoteText },
   } = useStyles(stylesheet);
 
   return (
-    <View style={container}>
-      <Text style={quoteText}>
-        “There are no shortcuts—everything is reps, reps, reps.”
-      </Text>
-    </View>
+    <SafeAreaView>
+      <View style={container}>
+        <Text style={quoteText}>
+          “There are no shortcuts—everything is reps, reps, reps.”
+        </Text>
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
 const stylesheet = createStyleSheet(({ colors, font, spacing, name }) => ({
   container: {
@@ -26,3 +28,5 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, name }) => ({
     fontSize: font.size.lg,
   },
 }));
+
+export default HomeScreen;

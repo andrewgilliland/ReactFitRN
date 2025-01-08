@@ -14,6 +14,7 @@ const TabsLayout = () => {
       screenOptions={{
         tabBarActiveTintColor: activeTint.color,
         tabBarStyle,
+        headerShown: false,
       }}
     >
       <Tabs.Screen
@@ -54,7 +55,7 @@ const TabsLayout = () => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, name }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing, name }) => ({
   screenContainerStyle: {
     backgroundColor: name === "dark" ? colors.black : colors.gray[50],
   },
@@ -64,7 +65,7 @@ const stylesheet = createStyleSheet(({ colors, name }) => ({
   tabBarStyle: {
     backgroundColor: name === "dark" ? colors.black : colors.gray[50],
     borderTopColor: colors.purple[500],
-    borderTopWidth: 2,
+    borderTopWidth: spacing["0.5"],
   },
 }));
 
