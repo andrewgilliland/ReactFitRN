@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const MuscleGroup = z.enum([
+export const muscleGroup = z.enum([
+  "Shoulders",
   "Chest",
   "Lats",
   "Upper Back",
@@ -8,12 +9,19 @@ export const MuscleGroup = z.enum([
   "Quads",
   "Hamstrings",
   "Glutes",
+  "Hip Flexors",
   "Calves",
+  "IT Band",
   "Triceps",
   "Biceps",
   "Forearms",
-  "Shoulders",
   "Abs",
+  "Obliques",
+  "Adductors",
+  "Abductors",
+  "Neck",
+  "Palmar Fascia",
+  "Plantar Fascia",
 ]);
 
-export type MuscleGroupType = z.infer<typeof MuscleGroup>;
+export type MuscleGroup = z.infer<typeof muscleGroup>;

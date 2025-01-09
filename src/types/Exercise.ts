@@ -1,17 +1,23 @@
 import { z } from "zod";
+import { muscleGroup } from "./MuscleGroup";
+import { difficulty } from "./Difficulty";
+import { exerciseType } from "./ExerciseType";
+import { equipment } from "./Equipment";
 
-export const Exercise = z.object({
+// * Source: https://www.muscleandstrength.com/exercises
+export const exercise = z.object({
   id: z.string(),
   name: z.string(),
-  difficulty: z.string(),
-  exerciseType: z.string(),
-  equipment: z.string(),
+  difficulty, // experience level
+  exerciseType,
+  equipment,
   forceType: z.string(),
   mechanics: z.string(),
-  targetMuscleGroup: z.string(),
-  secondaryMuscleGroups: z.array(z.string()),
-  description: z.string(),
+  targetMuscleGroup: muscleGroup,
+  secondaryMuscleGroups: z.array(muscleGroup),
+  description: z.string(), // overview
+  instructions: z.string(),
   image: z.string(),
 });
 
-export type ExerciseType = z.infer<typeof Exercise>;
+export type Exercise = z.infer<typeof exercise>;

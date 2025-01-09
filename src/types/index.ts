@@ -1,5 +1,5 @@
-export { ExerciseType } from "./Exercise";
-export { MuscleGroupType } from "./MuscleGroup";
+export { Exercise } from "./Exercise";
+export { MuscleGroup } from "./MuscleGroup";
 
 export type Workout = {
   id: number;
