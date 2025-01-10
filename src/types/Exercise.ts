@@ -3,6 +3,8 @@ import { muscleGroup } from "./MuscleGroup";
 import { difficulty } from "./Difficulty";
 import { exerciseType } from "./ExerciseType";
 import { equipment } from "./Equipment";
+import { forceType } from "./ForceType";
+import { mechanics } from "./Mechanics";
 
 // * Source: https://www.muscleandstrength.com/exercises
 export const exercise = z.object({
@@ -11,8 +13,8 @@ export const exercise = z.object({
   difficulty, // experience level
   exerciseType,
   equipment,
-  forceType: z.string(),
-  mechanics: z.string(),
+  forceType,
+  mechanics,
   targetMuscleGroup: muscleGroup,
   secondaryMuscleGroups: z.array(muscleGroup),
   description: z.string(), // overview

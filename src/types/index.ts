@@ -1,4 +1,5 @@
 export { Exercise } from "./Exercise";
+export { Difficulty } from "./Difficulty";
 export { MuscleGroup } from "./MuscleGroup";
 
 export type Workout = {
