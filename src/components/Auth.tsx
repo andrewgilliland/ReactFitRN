@@ -81,6 +81,7 @@ export default function Auth() {
           /> */}
           <ThemedButton
             theme="primary"
+            size="lg"
             disabled={loading}
             onPress={() => signInWithEmail()}
           >
