@@ -1,10 +1,11 @@
-import React, { FC, useState } from "react";
+import { State } from "@/src/types";
+import { FC, useState } from "react";
 import { TextInput } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type ThemedTextInputProps = {
   placeholder: string;
-  valueState: [string, React.Dispatch<React.SetStateAction<string>>];
+  valueState: State<string>;
 };
 
 const ThemedTextInput: FC<ThemedTextInputProps> = ({
