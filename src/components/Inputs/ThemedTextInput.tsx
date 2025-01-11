@@ -1,16 +1,16 @@
 import { State } from "@/src/types";
 import { FC, useState } from "react";
-import { TextInput } from "react-native";
+import { TextInput, TextInputProps } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-type ThemedTextInputProps = {
-  placeholder: string;
+type ThemedTextInputProps = TextInputProps & {
   valueState: State<string>;
+  // TODO: Add Haptics feedback
 };
 
 const ThemedTextInput: FC<ThemedTextInputProps> = ({
-  placeholder,
   valueState,
+  ...restProps
 }) => {
   const { styles } = useStyles(stylesheet);
   const [value, setValue] = valueState;
@@ -19,12 +19,12 @@ const ThemedTextInput: FC<ThemedTextInputProps> = ({
   return (
     <TextInput
       onChangeText={(text) => setValue(text)}
-      onFocus={() => setIsFocused(!isFocused)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       value={value}
       placeholderTextColor={styles.placeholderTextColor.color}
-      placeholder={placeholder}
-      autoCapitalize={"none"}
       style={[styles.textInput, isFocused && styles.focused]}
+      {...restProps}
     />
   );
 };

@@ -8,6 +8,7 @@ import {
   useStyles,
 } from "react-native-unistyles";
 import ThemedTextInput from "./Inputs/ThemedTextInput";
+import ThemedButton from "./ThemedButton";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -59,27 +60,46 @@ export default function Auth() {
     <View style={styles.container}>
       <View style={[styles.verticallySpaced, styles["mt-5"]]}>
         <View>
-          <ThemedTextInput valueState={[email, setEmail]} placeholder="Email" />
+          <ThemedTextInput
+            valueState={[email, setEmail]}
+            autoCapitalize={"none"}
+            placeholder="Email"
+          />
         </View>
         <View style={styles.verticallySpaced}>
           <ThemedTextInput
             valueState={[password, setPassword]}
+            autoCapitalize={"none"}
             placeholder="Password"
           />
         </View>
         <View style={[styles.verticallySpaced, styles["mt-5"]]}>
-          <Button
+          {/* <Button
             title="Sign in"
             disabled={loading}
             onPress={() => signInWithEmail()}
-          />
+          /> */}
+          <ThemedButton
+            theme="primary"
+            disabled={loading}
+            onPress={() => signInWithEmail()}
+          >
+            Sign In
+          </ThemedButton>
         </View>
         <View style={styles.verticallySpaced}>
-          <Button
+          {/* <Button
             title="Sign up"
             disabled={loading}
             onPress={() => signUpWithEmail()}
-          />
+          /> */}
+          <ThemedButton
+            theme="secondary"
+            disabled={loading}
+            onPress={() => signUpWithEmail()}
+          >
+            Sign Up
+          </ThemedButton>
         </View>
       </View>
       <View style={styles["mb-5"]}>
