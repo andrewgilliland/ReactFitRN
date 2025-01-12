@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { Alert, View, AppState, Button, TextInput } from "react-native";
+import { Alert, View, AppState, Text } from "react-native";
 import { supabase } from "../lib/supabase";
 
-import {
-  createStyleSheet,
-  UnistylesRuntime,
-  useStyles,
-} from "react-native-unistyles";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 import ThemedTextInput from "./Inputs/ThemedTextInput";
 import ThemedButton from "./ThemedButton";
 
@@ -22,7 +18,7 @@ AppState.addEventListener("change", (state) => {
   }
 });
 
-export default function Auth() {
+export default function LoginForm() {
   const { styles } = useStyles(stylesheet);
 
   const [email, setEmail] = useState("");
@@ -58,27 +54,28 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
+      <View>
+        <Text style={styles.heading}>Login</Text>
+        <Text style={styles.description}>
+          Enter your email below to sign in to your account
+        </Text>
+      </View>
       <View style={[styles.verticallySpaced, styles["mt-5"]]}>
         <View>
           <ThemedTextInput
             valueState={[email, setEmail]}
             autoCapitalize={"none"}
-            placeholder="Email"
+            label="Email"
           />
         </View>
         <View style={styles.verticallySpaced}>
           <ThemedTextInput
             valueState={[password, setPassword]}
             autoCapitalize={"none"}
-            placeholder="Password"
+            label="Password"
           />
         </View>
         <View style={[styles.verticallySpaced, styles["mt-5"]]}>
-          {/* <Button
-            title="Sign in"
-            disabled={loading}
-            onPress={() => signInWithEmail()}
-          /> */}
           <ThemedButton
             theme="primary"
             size="lg"
@@ -89,13 +86,9 @@ export default function Auth() {
           </ThemedButton>
         </View>
         <View style={styles.verticallySpaced}>
-          {/* <Button
-            title="Sign up"
-            disabled={loading}
-            onPress={() => signUpWithEmail()}
-          /> */}
           <ThemedButton
             theme="secondary"
+            size="lg"
             disabled={loading}
             onPress={() => signUpWithEmail()}
           >
@@ -103,7 +96,7 @@ export default function Auth() {
           </ThemedButton>
         </View>
       </View>
-      <View style={styles["mb-5"]}>
+      {/* <View style={styles["mb-5"]}>
         <Button
           title="Toggle Theme"
           onPress={() => {
@@ -112,7 +105,7 @@ export default function Auth() {
             );
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -120,20 +113,31 @@ export default function Auth() {
 const stylesheet = createStyleSheet(({ colors, font, rounded, spacing }) => ({
   container: {
     backgroundColor: colors.black,
-    justifyContent: "space-between",
-    height: "100%",
-    paddingTop: 40,
     padding: 12,
+    borderWidth: 2,
+    borderColor: colors.neutral[800],
+    borderRadius: rounded.lg,
+    paddingHorizontal: spacing[6],
+    paddingTop: spacing[8],
+    paddingBottom: spacing[28],
   },
-  textInput: {
-    backgroundColor: colors.neutral[800],
+  heading: {
     color: colors.neutral[100],
-    borderWidth: spacing["0.5"],
-    borderRadius: rounded.xl,
-    fontSize: font.size.base,
-    fontWeight: "500",
-    padding: spacing[3],
+    fontSize: font.size["xl"],
+    fontWeight: "bold",
   },
+  description: {
+    color: colors.neutral[400],
+    fontSize: font.size.sm,
+  },
+  //   backgroundColor: colors.neutral[800],
+  //   color: colors.neutral[100],
+  //   borderWidth: spacing["0.5"],
+  //   borderRadius: rounded.xl,
+  //   fontSize: font.size.base,
+  //   fontWeight: "500",
+  //   padding: spacing[3],
+  // },
   focused: { borderColor: colors.orange[600] },
   placeholderTextColor: { color: colors.neutral[600] },
   verticallySpaced: {
@@ -143,8 +147,5 @@ const stylesheet = createStyleSheet(({ colors, font, rounded, spacing }) => ({
   },
   "mt-5": {
     marginTop: 20,
-  },
-  "mb-5": {
-    marginBottom: 20,
   },
 }));

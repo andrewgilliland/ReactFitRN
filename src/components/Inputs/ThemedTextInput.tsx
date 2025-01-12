@@ -1,15 +1,17 @@
 import { State } from "@/src/types";
 import { FC, useState } from "react";
-import { TextInput, TextInputProps } from "react-native";
+import { Text, TextInput, TextInputProps, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type ThemedTextInputProps = TextInputProps & {
   valueState: State<string>;
+  label?: string;
   // TODO: Add Haptics feedback
 };
 
 const ThemedTextInput: FC<ThemedTextInputProps> = ({
   valueState,
+  label,
   ...restProps
 }) => {
   const { styles } = useStyles(stylesheet);
@@ -17,20 +19,29 @@ const ThemedTextInput: FC<ThemedTextInputProps> = ({
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <TextInput
-      onChangeText={(text) => setValue(text)}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-      value={value}
-      placeholderTextColor={styles.placeholderTextColor.color}
-      style={[styles.textInput, isFocused && styles.focused]}
-      {...restProps}
-    />
+    <View>
+      {label && <Text style={styles.label}>{label}</Text>}
+
+      <TextInput
+        onChangeText={(text) => setValue(text)}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        value={value}
+        placeholderTextColor={styles.placeholderTextColor.color}
+        style={[styles.textInput, isFocused && styles.focused]}
+        {...restProps}
+      />
+    </View>
   );
 };
 
 const stylesheet = createStyleSheet(({ colors, font, rounded, spacing }) => ({
   container: {},
+  label: {
+    fontSize: font.size.sm,
+    color: colors.neutral[400],
+    marginBottom: spacing[1],
+  },
   textInput: {
     backgroundColor: colors.neutral[800],
     color: colors.neutral[100],

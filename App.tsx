@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./src/lib/supabase";
-import Auth from "./src/components/Auth";
+import LoginForm from "./src/components/LoginForm";
 import Account from "./src/components/Account";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
@@ -24,7 +24,7 @@ export default function App() {
       {session && session.user ? (
         <Account key={session.user.id} session={session} />
       ) : (
-        <Auth />
+        <LoginForm />
       )}
     </View>
   );

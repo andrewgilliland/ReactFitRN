@@ -8,12 +8,6 @@ export const lightTheme = {
   font,
   spacing,
   rounded,
-  margins: {
-    sm: 2,
-    md: 4,
-    lg: 8,
-    xl: 12,
-  },
   name: "light",
 } as const;
 
@@ -22,12 +16,6 @@ export const darkTheme = {
   font,
   spacing,
   rounded,
-  margins: {
-    sm: 2,
-    md: 4,
-    lg: 8,
-    xl: 12,
-  },
   name: "dark",
 } as const;
 

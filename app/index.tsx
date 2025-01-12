@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../src/lib/supabase";
-import Auth from "../src/components/Auth";
+import LoginForm from "../src/components/LoginForm";
 import Account from "../src/components/Account";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
+import LoginScreen from "@/src/screens/LoginScreen";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -23,7 +24,7 @@ export default function App() {
       {session && session.user ? (
         <Account key={session.user.id} session={session} />
       ) : (
-        <Auth />
+        <LoginScreen />
       )}
     </View>
   );
