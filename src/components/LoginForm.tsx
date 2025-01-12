@@ -122,11 +122,12 @@ const stylesheet = createStyleSheet(({ colors, font, rounded, spacing }) => ({
     paddingBottom: spacing[28],
   },
   heading: {
+    fontFamily: "workSansBold",
     color: colors.neutral[100],
     fontSize: font.size["xl"],
-    fontWeight: "bold",
   },
   description: {
+    fontFamily: "workSansMedium",
     color: colors.neutral[400],
     fontSize: font.size.sm,
   },
