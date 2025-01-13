@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Alert, View, AppState, Text as RNText } from "react-native";
+import { Alert, View, AppState } from "react-native";
 import { supabase } from "../lib/supabase";
 
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import ThemedTextInput from "./Inputs/ThemedTextInput";
-import ThemedButton from "./ThemedButton";
+import Button from "./Button";
 import Text from "./Text";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
@@ -79,24 +79,25 @@ export default function LoginForm() {
           />
         </View>
         <View style={[styles.verticallySpaced, styles["mt-5"]]}>
-          <ThemedButton
+          <Button
             theme="primary"
             size="lg"
             disabled={loading}
             onPress={() => signInWithEmail()}
+            style={{ width: "100%" }}
           >
             Sign In
-          </ThemedButton>
+          </Button>
         </View>
         <View style={styles.verticallySpaced}>
-          <ThemedButton
+          <Button
             theme="secondary"
             size="lg"
             disabled={loading}
             onPress={() => signUpWithEmail()}
           >
             Sign Up
-          </ThemedButton>
+          </Button>
         </View>
       </View>
       {/* <View style={styles["mb-5"]}>

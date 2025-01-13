@@ -1,22 +1,28 @@
 import { FC } from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable, StyleProp, ViewStyle } from "react-native";
+import Text from "./Text";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { colors, spacing, font } from "@/style";
 
-type ThemedButtonProps = {
+type ButtonProps = {
   children: string;
   disabled?: boolean;
   onPress: () => void;
   theme?: "primary" | "secondary" | "neutral";
   size?: "sm" | "md" | "lg";
+  /**
+   * An optional style override useful for padding & margin.
+   */
+  style?: StyleProp<ViewStyle>;
 };
 
-const ThemedButton: FC<ThemedButtonProps> = ({
-  children,
+const Button: FC<ButtonProps> = ({
   disabled,
   onPress,
   theme = "primary",
   size = "md",
+  children,
+  style,
 }) => {
   const {
     styles: { pressable, text },
@@ -40,16 +46,23 @@ const ThemedButton: FC<ThemedButtonProps> = ({
   const textSizes = {
     sm: { fontSize: font.size.sm },
     md: { fontSize: font.size.base },
-    lg: { fontSize: font.size.lg },
+    lg: { fontSize: font.size.xl },
   };
 
   return (
     <Pressable
       onPress={onPress}
-      style={[pressable, { backgroundColor: themes[theme] }, buttonSizes[size]]}
+      style={[
+        pressable,
+        { backgroundColor: themes[theme] },
+        buttonSizes[size],
+        style,
+      ]}
       disabled={disabled}
     >
-      <Text style={[text, textSizes[size]]}>{children}</Text>
+      <Text weight="bold" style={[text, textSizes[size]]}>
+        {children}
+      </Text>
     </Pressable>
   );
 };
@@ -59,7 +72,7 @@ const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
     alignSelf: "flex-start",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: rounded.lg,
+    borderRadius: rounded.xl,
     paddingHorizontal: spacing[4],
     paddingVertical: spacing[2],
   },
@@ -69,4 +82,4 @@ const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
   },
 }));
 
-export default ThemedButton;
+export default Button;
