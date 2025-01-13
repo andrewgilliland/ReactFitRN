@@ -2,10 +2,10 @@ import { FC } from "react";
 import { Text as RNText, StyleProp, TextStyle } from "react-native";
 import { colors, font, typography } from "@/style";
 
-type ColorKey = keyof typeof colors;
-type ColorShade = keyof (typeof colors)[ColorKey];
+type Color = keyof typeof colors;
+type Shade = keyof (typeof colors)[Color];
 type ColorCode =
-  | `${Exclude<ColorKey, "black" | "white">}.${ColorShade}`
+  | `${Exclude<Color, "black" | "white">}.${Shade}`
   | "black"
   | "white";
 
@@ -38,7 +38,7 @@ const Text: FC<TextProps> = ({
     if (color === "black" || color === "white") {
       return colors[color];
     }
-    const [key, shade] = color.split(".") as [ColorKey, ColorShade];
+    const [key, shade] = color.split(".") as [Color, Shade];
     return colors[key][shade];
   };
 

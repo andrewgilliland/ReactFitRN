@@ -1,7 +1,8 @@
 import { State } from "@/src/types";
 import { FC, useState } from "react";
-import { Text, TextInput, TextInputProps, View } from "react-native";
+import { TextInput, TextInputProps, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import Text from "../Text";
 
 type ThemedTextInputProps = TextInputProps & {
   valueState: State<string>;
@@ -20,7 +21,16 @@ const ThemedTextInput: FC<ThemedTextInputProps> = ({
 
   return (
     <View>
-      {label && <Text style={styles.label}>{label}</Text>}
+      {label && (
+        <Text
+          color="neutral.400"
+          weight="medium"
+          size="sm"
+          style={styles.label}
+        >
+          {label}
+        </Text>
+      )}
 
       <TextInput
         onChangeText={(text) => setValue(text)}
@@ -38,8 +48,6 @@ const ThemedTextInput: FC<ThemedTextInputProps> = ({
 const stylesheet = createStyleSheet(({ colors, font, rounded, spacing }) => ({
   container: {},
   label: {
-    fontSize: font.size.sm,
-    color: colors.neutral[400],
     marginBottom: spacing[1],
   },
   textInput: {
