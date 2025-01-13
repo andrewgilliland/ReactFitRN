@@ -9,6 +9,7 @@ import {
   WorkSans_800ExtraBold as workSansExtraBold,
   WorkSans_900Black as workSansBlack,
 } from "@expo-google-fonts/work-sans";
+// https://fonts.google.com/specimen/Work+Sans
 
 export const customFontsToLoad = {
   workSansThin,

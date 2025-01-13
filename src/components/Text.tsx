@@ -2,10 +2,14 @@ import { FC } from "react";
 import { Text as RNText, StyleProp, TextStyle } from "react-native";
 import { colors, font, typography } from "@/style";
 
+type ColorKey = keyof typeof colors;
+type ColorShade = keyof (typeof colors)[ColorKey];
+type ColorCode =
+  | `${Exclude<ColorKey, "black" | "white">}.${ColorShade}`
+  | "black"
+  | "white";
+
 type FontFamily = keyof typeof typography;
-type ColorKeys = keyof typeof colors;
-type ColorShades = keyof (typeof colors)[ColorKeys];
-type ColorCode = `${ColorKeys}.${ColorShades}`;
 type FontSize = keyof typeof font.size;
 type FontWeight = "light" | "regular" | "medium" | "semibold" | "bold";
 
@@ -29,8 +33,12 @@ const Text: FC<TextProps> = ({
   style,
   children,
 }) => {
-  const getColorValue = (color: `${ColorKeys}.${ColorShades}`) => {
-    const [key, shade] = color.split(".") as [ColorKeys, ColorShades];
+  /** Accepts a ColorCode value and returns the Hex Color value */
+  const getColorValue = (color: ColorCode) => {
+    if (color === "black" || color === "white") {
+      return colors[color];
+    }
+    const [key, shade] = color.split(".") as [ColorKey, ColorShade];
     return colors[key][shade];
   };
 
