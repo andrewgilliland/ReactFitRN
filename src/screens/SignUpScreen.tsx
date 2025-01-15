@@ -1,8 +1,8 @@
 import React from "react";
-import LoginForm from "../components/Forms/LoginForm";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import SignUpForm from "../components/Forms/SignUpForm";
 
-const LoginScreen = () => {
+const SignUpScreen = () => {
   return (
     <View
       style={{
@@ -13,9 +13,9 @@ const LoginScreen = () => {
         justifyContent: "center",
       }}
     >
-      <LoginForm />
+      <SignUpForm />
     </View>
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

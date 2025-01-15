@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./src/lib/supabase";
-import LoginForm from "./src/components/LoginForm";
+import LoginForm from "./src/components/Forms/LoginForm";
 import Account from "./src/components/Account";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";

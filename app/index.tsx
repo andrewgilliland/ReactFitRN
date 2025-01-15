@@ -9,6 +9,7 @@ import {
 import Account from "../src/components/Account";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
+import SignUpScreen from "@/src/screens/SignUpScreen";
 import LoginScreen from "@/src/screens/LoginScreen";
 
 const customFontsToLoad = {
