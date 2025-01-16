@@ -7,9 +7,9 @@ import {
 } from "../../lib/supabase";
 
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import TextInput from "../Inputs/TextInput";
+import { Text, TextInput } from "@/components";
 import Button from "../Button";
-import Text from "../Text";
+
 import { spacing } from "@/src/style";
 
 // Tells Supabase Auth to continuously refresh the session automatically if

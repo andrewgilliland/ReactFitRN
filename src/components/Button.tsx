@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
-import Text from "./Text";
+import { Text } from "./Text";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { colors, spacing, font } from "@/style";
 

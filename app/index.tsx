@@ -1,22 +1,11 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../src/lib/supabase";
 import { useFonts } from "expo-font";
-import {
-  WorkSans_500Medium as workSansMedium,
-  WorkSans_600SemiBold as workSansSemiBold,
-  WorkSans_700Bold as workSansBold,
-} from "@expo-google-fonts/work-sans";
 import UserScreem from "../src/screens/UserScreen";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
-import SignUpScreen from "@/src/screens/SignUpScreen";
 import LoginScreen from "@/src/screens/LoginScreen";
-
-const customFontsToLoad = {
-  workSansMedium,
-  workSansSemiBold,
-  workSansBold,
-};
+import { customFontsToLoad } from "@/src/style";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);

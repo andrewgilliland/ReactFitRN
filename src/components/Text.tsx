@@ -11,7 +11,7 @@ type ColorCode =
 
 type FontFamily = keyof typeof typography;
 type FontSize = keyof typeof font.size;
-type FontWeight = "light" | "regular" | "medium" | "semibold" | "bold";
+type FontWeight = keyof typeof typography.sans;
 
 type TextProps = {
   family?: FontFamily;
@@ -25,7 +25,7 @@ type TextProps = {
   children: string;
 };
 
-const Text: FC<TextProps> = ({
+export const Text: FC<TextProps> = ({
   family = "sans",
   color = "neutral.100",
   size = "base",
@@ -53,5 +53,3 @@ const Text: FC<TextProps> = ({
 
   return <RNText style={$style}>{children}</RNText>;
 };
-
-export default Text;

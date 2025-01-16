@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { View, Alert, Button } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Session } from "@supabase/supabase-js";
-import { supabase } from "../lib/supabase";
-import TextInput from "../components/Inputs/TextInput";
+import { signOut, supabase } from "../lib/supabase";
+import { TextInput } from "@/components";
 
 const UserScreen = ({ session }: { session: Session }) => {
   const { styles } = useStyles(stylesheet);
@@ -114,7 +114,7 @@ const UserScreen = ({ session }: { session: Session }) => {
       </View>
 
       <View style={styles.verticallySpaced}>
-        <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+        <Button title="Sign Out" onPress={() => signOut()} />
       </View>
     </View>
   );
