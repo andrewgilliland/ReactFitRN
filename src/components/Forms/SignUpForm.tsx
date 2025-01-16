@@ -3,7 +3,7 @@ import { Alert, View, AppState, TouchableOpacity } from "react-native";
 import { supabase } from "../../lib/supabase";
 
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import ThemedTextInput from "../Inputs/ThemedTextInput";
+import TextInput from "../Inputs/TextInput";
 import Button from "../Button";
 import Text from "../Text";
 import { spacing } from "@/src/style";
@@ -25,6 +25,7 @@ const SignUpForm = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function signUpWithEmail() {
@@ -61,17 +62,23 @@ const SignUpForm = () => {
       </View>
       <View style={{ marginTop: spacing[12] }}>
         <View>
-          <ThemedTextInput
+          <TextInput
             valueState={[email, setEmail]}
             autoCapitalize={"none"}
             label="Email"
           />
         </View>
         <View style={{ marginTop: spacing[2] }}>
-          <ThemedTextInput
+          <TextInput
             valueState={[password, setPassword]}
             autoCapitalize={"none"}
             label="Password"
+            secureTextEntry
+          />
+          <TextInput
+            valueState={[confirmPassword, setConfirmPassword]}
+            autoCapitalize={"none"}
+            label="Confirm Password"
             secureTextEntry
           />
         </View>

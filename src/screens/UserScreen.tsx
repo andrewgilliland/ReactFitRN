@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
-import { StyleSheet, View, Alert, Button, TextInput } from "react-native";
-// import { Button, Input } from "@rneui/themed";
+import { View, Alert, Button } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Session } from "@supabase/supabase-js";
+import { supabase } from "../lib/supabase";
+import TextInput from "../components/Inputs/TextInput";
 
-export default function Account({ session }: { session: Session }) {
+const UserScreen = ({ session }: { session: Session }) => {
+  const { styles } = useStyles(stylesheet);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [website, setWebsite] = useState("");
@@ -78,24 +80,30 @@ export default function Account({ session }: { session: Session }) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <TextInput value={session?.user?.email} editable={false} />
+    <View style={styles.screen}>
+      <View style={[styles.verticallySpaced, styles["mt-5"]]}>
+        <TextInput
+          label="Email"
+          valueState={[session?.user?.email || "", () => {}]}
+          editable={false}
+        />
       </View>
       <View style={styles.verticallySpaced}>
         <TextInput
-          value={username || ""}
+          label="Username"
+          valueState={[username, setUsername]}
           onChangeText={(text) => setUsername(text)}
         />
       </View>
       <View style={styles.verticallySpaced}>
         <TextInput
-          value={website || ""}
+          label="Website"
+          valueState={[website, setWebsite]}
           onChangeText={(text) => setWebsite(text)}
         />
       </View>
 
-      <View style={[styles.verticallySpaced, styles.mt20]}>
+      <View style={[styles.verticallySpaced, styles["mt-5"]]}>
         <Button
           title={loading ? "Loading ..." : "Update"}
           onPress={() =>
@@ -110,19 +118,25 @@ export default function Account({ session }: { session: Session }) {
       </View>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: 12,
+const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
+  screen: {
+    height: "100%",
+    backgroundColor: colors.black,
+    paddingHorizontal: spacing[6],
+    paddingTop: spacing[8],
+    paddingBottom: spacing[28],
   },
+
   verticallySpaced: {
     paddingTop: 4,
     paddingBottom: 4,
     alignSelf: "stretch",
   },
-  mt20: {
+  "mt-5": {
     marginTop: 20,
   },
-});
+}));
+
+export default UserScreen;

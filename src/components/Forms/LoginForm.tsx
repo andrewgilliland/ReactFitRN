@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Alert,
-  View,
-  AppState,
-  TouchableOpacity,
-  Pressable,
-} from "react-native";
+import { Alert, View, AppState, Pressable } from "react-native";
 import {
   resetPasswordForEmail,
   signInWithEmail,
@@ -13,7 +7,7 @@ import {
 } from "../../lib/supabase";
 
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import ThemedTextInput from "../Inputs/ThemedTextInput";
+import TextInput from "../Inputs/TextInput";
 import Button from "../Button";
 import Text from "../Text";
 import { spacing } from "@/src/style";
@@ -60,14 +54,14 @@ export default function LoginForm() {
       </View>
       <View style={[styles.verticallySpaced, styles["mt-5"]]}>
         <View>
-          <ThemedTextInput
+          <TextInput
             valueState={[email, setEmail]}
             autoCapitalize={"none"}
             label="Email"
           />
         </View>
         <View style={styles.verticallySpaced}>
-          <ThemedTextInput
+          <TextInput
             valueState={[password, setPassword]}
             autoCapitalize={"none"}
             label="Password"
@@ -86,6 +80,12 @@ export default function LoginForm() {
               Forgot your password, reset your email
             </Text>
             <Pressable
+              style={{
+                padding: 4,
+                borderRadius: 12,
+                borderColor: "white",
+                borderWidth: 1,
+              }}
               onPress={async () => {
                 console.log("Word up");
                 const { data, error } = await resetPasswordForEmail(email);
