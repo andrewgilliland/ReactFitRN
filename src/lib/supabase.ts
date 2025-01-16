@@ -29,3 +29,18 @@ export const resetPasswordForEmail = async (email: string) =>
   });
 
 export const signOut = async () => await supabase.auth.signOut();
+
+export const getProfileByUserId = async (userId: string) =>
+  await supabase
+    .from("profiles")
+    .select(`username, website, avatar_url`)
+    .eq("id", userId)
+    .single();
+
+export const upsertProfile = async (updates: {
+  id: string;
+  username: string;
+  website: string;
+  avatar_url: string;
+  updated_at: Date;
+}) => await supabase.from("profiles").upsert(updates);

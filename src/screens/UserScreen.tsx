@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { View, Alert, Button } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Session } from "@supabase/supabase-js";
-import { signOut, supabase } from "../lib/supabase";
+import { getProfileByUserId, signOut, upsertProfile } from "../lib/supabase";
 import { TextInput } from "@/components";
 
 const UserScreen = ({ session }: { session: Session }) => {
@@ -21,11 +21,10 @@ const UserScreen = ({ session }: { session: Session }) => {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
 
-      const { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, website, avatar_url`)
-        .eq("id", session?.user.id)
-        .single();
+      const { data, error, status } = await getProfileByUserId(
+        session?.user.id
+      );
+
       if (error && status !== 406) {
         throw error;
       }
@@ -65,7 +64,7 @@ const UserScreen = ({ session }: { session: Session }) => {
         updated_at: new Date(),
       };
 
-      const { error } = await supabase.from("profiles").upsert(updates);
+      const { error } = await upsertProfile(updates);
 
       if (error) {
         throw error;
