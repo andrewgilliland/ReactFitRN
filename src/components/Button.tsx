@@ -16,7 +16,7 @@ type ButtonProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-const Button: FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   disabled,
   onPress,
   theme = "primary",
@@ -81,5 +81,3 @@ const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
     fontWeight: "700",
   },
 }));
-
-export default Button;

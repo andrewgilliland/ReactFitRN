@@ -5,10 +5,8 @@ import {
   signInWithEmail,
   supabase,
 } from "../../lib/supabase";
-
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Text, TextInput } from "@/components";
-import Button from "../Button";
+import { Button, Text, TextInput } from "@/components";
 
 import { spacing } from "@/src/style";
 

@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Alert, View, AppState } from "react-native";
 import { supabase } from "../../lib/supabase";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { TextInput, Text } from "@/components";
-import Button from "../Button";
-
+import { Button, TextInput, Text } from "@/components";
 import { spacing } from "@/src/style";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
