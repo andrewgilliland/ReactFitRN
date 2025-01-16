@@ -1,11 +1,22 @@
 import { useState } from "react";
-import { Alert, View, AppState, TouchableOpacity } from "react-native";
-import { signInWithEmail, supabase } from "../../lib/supabase";
+import {
+  Alert,
+  View,
+  AppState,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
+import {
+  resetPasswordForEmail,
+  signInWithEmail,
+  supabase,
+} from "../../lib/supabase";
 
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import ThemedTextInput from "../Inputs/ThemedTextInput";
 import Button from "../Button";
 import Text from "../Text";
+import { spacing } from "@/src/style";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -60,7 +71,37 @@ export default function LoginForm() {
             valueState={[password, setPassword]}
             autoCapitalize={"none"}
             label="Password"
+            secureTextEntry
           />
+          <View
+            style={{
+              marginTop: spacing[1],
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: spacing[1],
+            }}
+          >
+            <Text color="neutral.400" weight="medium" size="sm">
+              Forgot your password, reset your email
+            </Text>
+            <Pressable
+              onPress={async () => {
+                console.log("Word up");
+                const { data, error } = await resetPasswordForEmail(email);
+
+                if (error) {
+                  Alert.alert(error.message);
+                } else {
+                  Alert.alert("Password reset email sent");
+                }
+              }}
+            >
+              <Text color="neutral.100" weight="bold" size="base" style={{}}>
+                Here
+              </Text>
+            </Pressable>
+          </View>
         </View>
         <View style={[styles.verticallySpaced, styles["mt-5"]]}>
           <Button
@@ -82,26 +123,8 @@ export default function LoginForm() {
           <Text family="body" color="neutral.400" size="sm" weight="medium">
             Don't have an account?
           </Text>
-          {/* <Button
-            theme="secondary"
-            size="lg"
-            disabled={loading}
-            onPress={() => signUpWithEmail()}
-          >
-            Sign Up
-          </Button> */}
         </View>
       </View>
-      {/* <View style={styles["mb-5"]}>
-        <Button
-          title="Toggle Theme"
-          onPress={() => {
-            UnistylesRuntime.setTheme(
-              UnistylesRuntime.themeName === "light" ? "dark" : "light"
-            );
-          }}
-        />
-      </View> */}
     </View>
   );
 }

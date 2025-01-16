@@ -11,6 +11,7 @@ import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
 import SignUpScreen from "@/src/screens/SignUpScreen";
 import LoginScreen from "@/src/screens/LoginScreen";
+import SignUpForm from "@/src/components/Forms/SignUpForm";
 
 const customFontsToLoad = {
   workSansMedium,
@@ -27,6 +28,8 @@ export default function App() {
       setSession(session);
     });
 
+    console.log("App.tsx: supabase.auth.onAuthStateChange");
+
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
@@ -42,7 +45,7 @@ export default function App() {
       {session && session.user ? (
         <Account key={session.user.id} session={session} />
       ) : (
-        <LoginScreen />
+        <SignUpForm />
       )}
     </View>
   );

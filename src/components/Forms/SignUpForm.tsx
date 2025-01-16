@@ -72,6 +72,7 @@ const SignUpForm = () => {
             valueState={[password, setPassword]}
             autoCapitalize={"none"}
             label="Password"
+            secureTextEntry
           />
         </View>
 
@@ -90,16 +91,6 @@ const SignUpForm = () => {
           </Button>
         </View>
       </View>
-      {/* <View style={styles["mb-5"]}>
-        <Button
-          title="Toggle Theme"
-          onPress={() => {
-            UnistylesRuntime.setTheme(
-              UnistylesRuntime.themeName === "light" ? "dark" : "light"
-            );
-          }}
-        />
-      </View> */}
     </View>
   );
 };
