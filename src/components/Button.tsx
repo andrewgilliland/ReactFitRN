@@ -30,7 +30,7 @@ export const Button: FC<ButtonProps> = ({
   style,
 }) => {
   const {
-    styles: { pressable, text },
+    styles: { pressable, text, buttonPressed },
   } = useStyles(stylesheet);
 
   const themes = {
@@ -62,7 +62,11 @@ export const Button: FC<ButtonProps> = ({
   ];
 
   return (
-    <Pressable onPress={onPress} style={$style} disabled={disabled}>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [$style, pressed && buttonPressed]}
+      disabled={disabled}
+    >
       <Text weight="bold" style={[text, textSizes[size]]}>
         {children}
       </Text>
@@ -78,6 +82,14 @@ const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
     borderRadius: rounded.xl,
     paddingHorizontal: spacing[4],
     paddingVertical: spacing[2],
+    shadowOffset: { width: spacing["0.5"], height: spacing["0.5"] },
+    shadowColor: colors.neutral[100],
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
+  buttonPressed: {
+    shadowOffset: { width: 0, height: 0 },
+    transform: [{ translateX: spacing["0.5"] }, { translateY: spacing["0.5"] }],
   },
   text: {
     color: colors.neutral[100],

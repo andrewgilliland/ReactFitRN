@@ -80,21 +80,21 @@ const UserScreen = ({ session }: { session: Session }) => {
 
   return (
     <View style={styles.screen}>
-      <View style={[styles.verticallySpaced, styles["mt-5"]]}>
+      <View style={styles["mt-5"]}>
         <TextInput
           label="Email"
           valueState={[session?.user?.email || "", () => {}]}
           editable={false}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={{}}>
         <TextInput
           label="Username"
           valueState={[username, setUsername]}
           onChangeText={(text) => setUsername(text)}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      <View style={{}}>
         <TextInput
           label="Website"
           valueState={[website, setWebsite]}
@@ -102,22 +102,30 @@ const UserScreen = ({ session }: { session: Session }) => {
         />
       </View>
 
-      <View style={[styles.verticallySpaced, styles["mt-5"]]}>
-        <Button
-          size="lg"
-          onPress={() =>
-            updateProfile({ username, website, avatar_url: avatarUrl })
-          }
-          disabled={loading}
-        >
-          {loading ? "Loading ..." : "Update"}
-        </Button>
-      </View>
+      <View style={styles["mt-10"]}>
+        <View style={styles["mt-5"]}>
+          <Button
+            size="lg"
+            onPress={() =>
+              updateProfile({ username, website, avatar_url: avatarUrl })
+            }
+            disabled={loading}
+            style={{ width: "100%" }}
+          >
+            {loading ? "Loading ..." : "Update"}
+          </Button>
+        </View>
 
-      <View style={styles.verticallySpaced}>
-        <Button color="neutral.700" size="lg" onPress={() => signOut()}>
-          Sign Out
-        </Button>
+        <View style={styles["mt-5"]}>
+          <Button
+            color="neutral.700"
+            size="lg"
+            onPress={() => signOut()}
+            style={{ width: "100%" }}
+          >
+            Sign Out
+          </Button>
+        </View>
       </View>
     </View>
   );
@@ -131,14 +139,11 @@ const stylesheet = createStyleSheet(({ colors, spacing }) => ({
     paddingTop: spacing[8],
     paddingBottom: spacing[28],
   },
-
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
+  "mt-10": {
+    marginTop: spacing[10],
   },
   "mt-5": {
-    marginTop: 20,
+    marginTop: spacing[5],
   },
 }));
 
