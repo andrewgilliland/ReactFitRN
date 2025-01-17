@@ -32,7 +32,11 @@ export default function App() {
 
   return (
     <View>
-      {session && session.user ? <Redirect href="(tabs)" /> : <LoginScreen />}
+      {session && session.user ? (
+        <Redirect href="(tabs)/home" />
+      ) : (
+        <LoginScreen />
+      )}
     </View>
   );
 }

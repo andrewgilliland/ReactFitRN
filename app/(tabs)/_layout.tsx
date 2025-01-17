@@ -19,7 +19,7 @@ const TabsLayout = () => {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           headerTitle: "Home",
           title: "Home",
