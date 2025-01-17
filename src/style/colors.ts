@@ -290,3 +290,27 @@ export const colors = {
     950: "#4c0519",
   },
 } as const;
+
+export type Color = keyof typeof colors;
+export type Shade = keyof (typeof colors)[Color];
+export type ColorCode =
+  | `${Exclude<Color, "black" | "white">}.${Shade}`
+  | "black"
+  | "white";
+
+type ColorValues<T> = T extends Record<string, infer U>
+  ? U extends Record<string, infer V>
+    ? V
+    : U
+  : never;
+
+export type HexColor = ColorValues<typeof colors>;
+
+/** Accepts a ColorCode value and returns the Hex Color value */
+export const getColorValue = (color: ColorCode): HexColor => {
+  if (color === "black" || color === "white") {
+    return colors[color];
+  }
+  const [key, shade] = color.split(".") as [Color, Shade];
+  return colors[key][shade] as HexColor;
+};

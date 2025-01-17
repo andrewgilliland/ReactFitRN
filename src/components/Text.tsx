@@ -1,13 +1,7 @@
 import { FC } from "react";
 import { Text as RNText, StyleProp, TextStyle } from "react-native";
-import { colors, font, typography } from "@/style";
-
-type Color = keyof typeof colors;
-type Shade = keyof (typeof colors)[Color];
-type ColorCode =
-  | `${Exclude<Color, "black" | "white">}.${Shade}`
-  | "black"
-  | "white";
+import { font, typography } from "@/style";
+import { ColorCode, getColorValue } from "../style/colors";
 
 type FontFamily = keyof typeof typography;
 type FontSize = keyof typeof font.size;
@@ -33,15 +27,6 @@ export const Text: FC<TextProps> = ({
   style,
   children,
 }) => {
-  /** Accepts a ColorCode value and returns the Hex Color value */
-  const getColorValue = (color: ColorCode) => {
-    if (color === "black" || color === "white") {
-      return colors[color];
-    }
-    const [key, shade] = color.split(".") as [Color, Shade];
-    return colors[key][shade];
-  };
-
   const colorValue = getColorValue(color);
 
   const $style = [

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { View, Alert, Button } from "react-native";
+import { View, Alert } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Session } from "@supabase/supabase-js";
 import { getProfileByUserId, signOut, upsertProfile } from "../lib/supabase";
-import { TextInput } from "@/components";
+import { Button, TextInput } from "@/components";
 
 const UserScreen = ({ session }: { session: Session }) => {
   const { styles } = useStyles(stylesheet);
@@ -104,22 +104,26 @@ const UserScreen = ({ session }: { session: Session }) => {
 
       <View style={[styles.verticallySpaced, styles["mt-5"]]}>
         <Button
-          title={loading ? "Loading ..." : "Update"}
+          size="lg"
           onPress={() =>
             updateProfile({ username, website, avatar_url: avatarUrl })
           }
           disabled={loading}
-        />
+        >
+          {loading ? "Loading ..." : "Update"}
+        </Button>
       </View>
 
       <View style={styles.verticallySpaced}>
-        <Button title="Sign Out" onPress={() => signOut()} />
+        <Button color="neutral.700" size="lg" onPress={() => signOut()}>
+          Sign Out
+        </Button>
       </View>
     </View>
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing }) => ({
   screen: {
     height: "100%",
     backgroundColor: colors.black,

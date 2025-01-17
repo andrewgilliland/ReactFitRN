@@ -3,9 +3,14 @@ import { Pressable, StyleProp, ViewStyle } from "react-native";
 import { Text } from "./Text";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { colors, spacing, font } from "@/style";
+import { ColorCode, getColorValue } from "../style/colors";
 
 type ButtonProps = {
   children: string;
+  /**
+   * Override the default theme colors of the button.
+   */
+  color?: ColorCode;
   disabled?: boolean;
   onPress: () => void;
   theme?: "primary" | "secondary" | "neutral";
@@ -17,11 +22,12 @@ type ButtonProps = {
 };
 
 export const Button: FC<ButtonProps> = ({
+  children,
+  color,
   disabled,
   onPress,
   theme = "primary",
   size = "md",
-  children,
   style,
 }) => {
   const {
@@ -49,17 +55,15 @@ export const Button: FC<ButtonProps> = ({
     lg: { fontSize: font.size.xl },
   };
 
+  const $style = [
+    pressable,
+    { backgroundColor: color ? getColorValue(color) : themes[theme] },
+    buttonSizes[size],
+    style,
+  ];
+
   return (
-    <Pressable
-      onPress={onPress}
-      style={[
-        pressable,
-        { backgroundColor: themes[theme] },
-        buttonSizes[size],
-        style,
-      ]}
-      disabled={disabled}
-    >
+    <Pressable onPress={onPress} style={$style} disabled={disabled}>
       <Text weight="bold" style={[text, textSizes[size]]}>
         {children}
       </Text>
@@ -78,6 +82,5 @@ const stylesheet = createStyleSheet(({ colors, rounded, spacing }) => ({
   },
   text: {
     color: colors.neutral[100],
-    fontWeight: "700",
   },
 }));
