@@ -4,5 +4,5 @@ export const rounded = {
   md: 4,
   lg: 8,
   xl: 16,
-  xxl: 32,
+  "2xl": 32,
 } as const;

@@ -14,7 +14,9 @@ const TabsLayout = () => {
       screenOptions={{
         tabBarActiveTintColor: activeTint.color,
         tabBarInactiveTintColor: inactiveTint.color,
-        tabBarStyle,
+        tabBarStyle: {
+          ...tabBarStyle,
+        },
         headerShown: false,
       }}
     >
@@ -66,7 +68,7 @@ const TabsLayout = () => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, spacing, name }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing, rounded }) => ({
   screenContainerStyle: {
     backgroundColor: colors.black,
   },
@@ -76,11 +78,10 @@ const stylesheet = createStyleSheet(({ colors, spacing, name }) => ({
   inactiveTint: {
     color: colors.neutral[500],
   },
-
   tabBarStyle: {
-    backgroundColor: colors.black,
-    borderTopColor: colors.orange[600],
-    borderTopWidth: spacing["0.5"],
+    borderRadius: rounded["2xl"],
+    backgroundColor: colors.neutral[800],
+    borderTopColor: colors.neutral[800],
   },
 }));
 
