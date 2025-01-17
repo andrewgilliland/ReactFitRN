@@ -1,10 +1,14 @@
 import { FC } from "react";
 import { Text as RNText, StyleProp, TextStyle } from "react-native";
-import { ColorCode, getColorValue, font, typography } from "@/styles";
-
-type FontFamily = keyof typeof typography;
-type FontSize = keyof typeof font.size;
-type FontWeight = keyof typeof typography.sans;
+import {
+  ColorCode,
+  getColorValue,
+  fontSize,
+  typography,
+  FontFamily,
+  FontSize,
+  FontWeight,
+} from "@/styles";
 
 type TextProps = {
   family?: FontFamily;
@@ -31,7 +35,7 @@ export const Text: FC<TextProps> = ({
   const $style = [
     { color: colorValue },
     { fontFamily: typography[family][weight] },
-    { fontSize: font.size[size] },
+    { fontSize: fontSize[size] },
     style,
   ];
 

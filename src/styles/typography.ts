@@ -23,6 +23,18 @@ export const customFontsToLoad = {
   workSansBlack,
 };
 
+const fontWeight = {
+  thin: "100",
+  extralight: "200",
+  light: "300",
+  regular: "400",
+  medium: "500",
+  semibold: "600",
+  bold: "700",
+  extrabold: "800",
+  black: "900",
+};
+
 const fonts = {
   workSans: {
     thin: "workSansThin",
@@ -37,6 +49,30 @@ const fonts = {
   },
 };
 
+export const fontFamily = {
+  sans: fonts.workSans,
+  serif: fonts.workSans,
+  heading: fonts.workSans,
+  body: fonts.workSans,
+  mono: fonts.workSans,
+} as const;
+
+export const fontSize = {
+  xs: 12,
+  sm: 14,
+  base: 16,
+  lg: 18,
+  xl: 20,
+  "2xl": 24,
+  "3xl": 30,
+  "4xl": 36,
+  "5xl": 48,
+  "6xl": 60,
+  "7xl": 72,
+  "8xl": 96,
+  "9xl": 128,
+} as const;
+
 export const typography = {
   sans: fonts.workSans,
   serif: fonts.workSans,
@@ -45,20 +81,6 @@ export const typography = {
   mono: fonts.workSans,
 } as const;
 
-export const font = {
-  size: {
-    xs: 12,
-    sm: 14,
-    base: 16,
-    lg: 18,
-    xl: 20,
-    "2xl": 24,
-    "3xl": 30,
-    "4xl": 36,
-    "5xl": 48,
-    "6xl": 60,
-    "7xl": 72,
-    "8xl": 96,
-    "9xl": 128,
-  },
-} as const;
+export type FontFamily = keyof typeof fontFamily;
+export type FontSize = keyof typeof fontSize;
+export type FontWeight = keyof typeof fontWeight;

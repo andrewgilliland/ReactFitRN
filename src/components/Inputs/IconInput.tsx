@@ -30,7 +30,7 @@ const IconInput: FC<IconInputProps> = ({ icon, placeholder, valueState }) => {
 };
 
 const stylesheet = createStyleSheet(
-  ({ colors, font, spacing, rounded, name }) => ({
+  ({ colors, fontSize, spacing, rounded, name }) => ({
     container: {
       flexDirection: "row",
       borderWidth: spacing["0.5"],
@@ -42,7 +42,7 @@ const stylesheet = createStyleSheet(
     },
     inputStyle: {
       color: name === "dark" ? colors.white : colors.black,
-      fontSize: font.size.base,
+      fontSize: fontSize.base,
     },
     placeholderStyle: {
       color: colors.gray[400],

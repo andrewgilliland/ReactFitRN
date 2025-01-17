@@ -18,14 +18,14 @@ const HomeScreen = () => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, font, spacing, name }) => ({
+const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
   container: {
     paddingTop: spacing[6],
     paddingHorizontal: spacing[4],
   },
   quoteText: {
     color: name === "dark" ? colors.white : colors.black,
-    fontSize: font.size.lg,
+    fontSize: fontSize.lg,
   },
 }));
 

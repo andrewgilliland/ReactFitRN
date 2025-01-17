@@ -55,7 +55,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, font, spacing, name }) => ({
+const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
   container: {
     backgroundColor: name === "dark" ? colors.black : colors.gray[50],
   },
@@ -68,7 +68,7 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, name }) => ({
   },
   screenHeading: {
     color: name === "dark" ? colors.white : colors.gray[800],
-    fontSize: font.size["2xl"],
+    fontSize: fontSize["2xl"],
     fontWeight: "600",
   },
   headerIcon: {

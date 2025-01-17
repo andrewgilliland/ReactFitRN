@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({ item }) => {
 };
 
 const stylesheet = createStyleSheet(
-  ({ colors, font, spacing, rounded, name }) => ({
+  ({ colors, fontSize, spacing, rounded, name }) => ({
     container: {
       backgroundColor: colors.amber[600],
       borderWidth: 1,
@@ -38,7 +38,7 @@ const stylesheet = createStyleSheet(
     text: {
       color: name === "dark" ? colors.white : colors.black,
       fontWeight: "bold",
-      fontSize: font.size.base,
+      fontSize: fontSize.base,
     },
     icon: {
       color: name === "dark" ? colors.white : colors.black,

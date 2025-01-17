@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "@/components";
-import { ColorCode, getColorValue, colors, spacing, font } from "@/styles";
+import { ColorCode, getColorValue, colors, spacing, fontSize } from "@/styles";
 
 type ButtonProps = {
   children: string;
@@ -49,9 +49,9 @@ export const Button: FC<ButtonProps> = ({
   };
 
   const textSizes = {
-    sm: { fontSize: font.size.sm },
-    md: { fontSize: font.size.base },
-    lg: { fontSize: font.size.xl },
+    sm: { fontSize: fontSize.sm },
+    md: { fontSize: fontSize.base },
+    lg: { fontSize: fontSize.xl },
   };
 
   const $style = [

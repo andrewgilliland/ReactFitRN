@@ -1,11 +1,11 @@
 import { rounded } from "./borderRadius";
 import { colors } from "./colors";
-import { font } from "./typography";
+import { fontSize } from "./typography";
 import { spacing } from "./spacing";
 
 export const lightTheme = {
   colors,
-  font,
+  fontSize,
   spacing,
   rounded,
   name: "light",
@@ -13,7 +13,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   colors,
-  font,
+  fontSize,
   spacing,
   rounded,
   name: "dark",

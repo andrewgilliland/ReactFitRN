@@ -45,22 +45,22 @@ export const TextInput: FC<ThemedTextInputProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, font, rounded, spacing }) => ({
-  container: {},
-  label: {
-    marginBottom: spacing[1],
-  },
-  textInput: {
-    backgroundColor: colors.neutral[800],
-    color: colors.neutral[100],
-    borderWidth: spacing["0.5"],
-    borderRadius: rounded.xl,
-    fontSize: font.size.base,
-    fontWeight: "500",
-    padding: spacing[3],
-  },
-  focused: { borderColor: colors.orange[600] },
-  placeholderTextColor: { color: colors.neutral[600] },
-}));
-
-// export TextInput;
+const stylesheet = createStyleSheet(
+  ({ colors, fontSize, rounded, spacing }) => ({
+    container: {},
+    label: {
+      marginBottom: spacing[1],
+    },
+    textInput: {
+      backgroundColor: colors.neutral[800],
+      color: colors.neutral[100],
+      borderWidth: spacing["0.5"],
+      borderRadius: rounded.xl,
+      fontSize: fontSize.base,
+      fontWeight: "500",
+      padding: spacing[3],
+    },
+    focused: { borderColor: colors.orange[600] },
+    placeholderTextColor: { color: colors.neutral[600] },
+  })
+);

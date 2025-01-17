@@ -26,13 +26,13 @@ const CardRow: FC<CardRowProps> = ({ type, workouts }) => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, font, spacing, name }) => ({
+const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
   container: {
     marginVertical: spacing[3],
   },
   heading: {
     color: name === "dark" ? colors.white : colors.red[800],
-    fontSize: font.size.lg,
+    fontSize: fontSize.lg,
     fontWeight: "bold",
     marginLeft: spacing[3],
   },

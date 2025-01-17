@@ -26,7 +26,7 @@ export default function ExerciseScreen() {
   );
 }
 
-const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
+const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
   headerContainer: {
     borderWidth: 1,
     paddingHorizontal: 36,
@@ -37,7 +37,7 @@ const stylesheet = createStyleSheet(({ colors, font, spacing, rounded }) => ({
   },
   screenHeading: {
     color: colors.gray[800],
-    fontSize: font.size["2xl"],
+    fontSize: fontSize["2xl"],
     fontWeight: "600",
   },
   headerIcon: {
