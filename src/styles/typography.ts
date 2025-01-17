@@ -38,13 +38,13 @@ const fontWeight = {
 const fonts = {
   workSans: {
     thin: "workSansThin",
-    extraLight: "workSansExtraLight",
+    extralight: "workSansExtraLight",
     light: "workSansLight",
     regular: "workSansRegular",
     medium: "workSansMedium",
     semibold: "workSansSemiBold",
     bold: "workSansBold",
-    extraBold: "workSansExtraBold",
+    extrabold: "workSansExtraBold",
     black: "workSansBlack",
   },
 };
@@ -71,6 +71,22 @@ export const fontSize = {
   "7xl": 72,
   "8xl": 96,
   "9xl": 128,
+} as const;
+
+export const lineHeight = {
+  xs: 16,
+  sm: 20,
+  base: 24,
+  lg: 28,
+  xl: 32,
+  "2xl": 36,
+  "3xl": 40,
+  "4xl": 44,
+  "5xl": 48,
+  "6xl": 52,
+  "7xl": 56,
+  "8xl": 60,
+  "9xl": 64,
 } as const;
 
 export const typography = {

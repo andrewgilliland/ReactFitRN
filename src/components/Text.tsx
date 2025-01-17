@@ -4,10 +4,11 @@ import {
   ColorCode,
   getColorValue,
   fontSize,
-  typography,
   FontFamily,
   FontSize,
   FontWeight,
+  fontFamily,
+  lineHeight,
 } from "@/styles";
 
 type TextProps = {
@@ -34,10 +35,11 @@ export const Text: FC<TextProps> = ({
 
   const $style = [
     { color: colorValue },
-    { fontFamily: typography[family][weight] },
+    { fontFamily: fontFamily[family][weight] },
     { fontSize: fontSize[size] },
+    { lineHeight: lineHeight[size] },
     style,
   ];
 
-  return <RNText style={$style}>{children}</RNText>;
+  return <RNText style={[$style]}>{children}</RNText>;
 };
