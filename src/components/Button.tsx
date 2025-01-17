@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
-import { Text } from "./Text";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { colors, spacing, font } from "@/style";
-import { ColorCode, getColorValue } from "../style/colors";
+import { Text } from "@/components";
+import { ColorCode, getColorValue, colors, spacing, font } from "@/styles";
 
 type ButtonProps = {
   children: string;

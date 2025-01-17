@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, View } from "react-native";
-import "@/src/style/unistyles";
+import "@/src/styles/unistyles";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const HomeScreen = () => {

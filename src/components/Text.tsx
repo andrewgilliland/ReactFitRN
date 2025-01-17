@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Text as RNText, StyleProp, TextStyle } from "react-native";
-import { font, typography } from "@/style";
-import { ColorCode, getColorValue } from "../style/colors";
+import { ColorCode, getColorValue, font, typography } from "@/styles";
 
 type FontFamily = keyof typeof typography;
 type FontSize = keyof typeof font.size;

@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { View, Alert } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Session } from "@supabase/supabase-js";
-import { getProfileByUserId, signOut, upsertProfile } from "../lib/supabase";
 import { Button, TextInput } from "@/components";
+import { getProfileByUserId, signOut, upsertProfile } from "../lib/supabase";
 
 const UserScreen = ({ session }: { session: Session }) => {
   const { styles } = useStyles(stylesheet);

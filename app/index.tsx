@@ -5,7 +5,7 @@ import UserScreem from "../src/screens/UserScreen";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
 import LoginScreen from "@/src/screens/LoginScreen";
-import { customFontsToLoad } from "@/src/style";
+import { customFontsToLoad } from "@/src/styles";
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);

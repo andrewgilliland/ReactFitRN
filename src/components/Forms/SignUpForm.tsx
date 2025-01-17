@@ -3,7 +3,7 @@ import { Alert, View, AppState } from "react-native";
 import { supabase } from "../../lib/supabase";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Button, TextInput, Text } from "@/components";
-import { spacing } from "@/src/style";
+import { spacing } from "@/styles";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
