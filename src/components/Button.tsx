@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { Text } from "@/components";
+import { Text } from "./Text";
 import { ColorCode, getColorValue, colors, spacing, fontSize } from "@/styles";
 
 type ButtonProps = {

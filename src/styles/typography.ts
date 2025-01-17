@@ -10,7 +10,20 @@ import {
   WorkSans_900Black as workSansBlack,
 } from "@expo-google-fonts/work-sans";
 // https://fonts.google.com/specimen/Work+Sans
+import {
+  JetBrainsMono_100Thin as jetBrainsMonoThin,
+  JetBrainsMono_200ExtraLight as jetBrainsMonoExtraLight,
+  JetBrainsMono_300Light as jetBrainsMonoLight,
+  JetBrainsMono_400Regular as jetBrainsMonoRegular,
+  JetBrainsMono_500Medium as jetBrainsMonoMedium,
+  JetBrainsMono_600SemiBold as jetBrainsMonoSemiBold,
+  JetBrainsMono_700Bold as jetBrainsMonoBold,
+  JetBrainsMono_800ExtraBold as jetBrainsMonoExtraBold,
+} from "@expo-google-fonts/jetbrains-mono";
+// https://fonts.google.com/specimen/JetBrains+Mono
 
+// * Import: Used in root level of App to load custom fonts with the useFonts hook.
+// * If font is not listed here, it will not be loaded.
 export const customFontsToLoad = {
   workSansThin,
   workSansExtraLight,
@@ -21,6 +34,14 @@ export const customFontsToLoad = {
   workSansBold,
   workSansExtraBold,
   workSansBlack,
+  jetBrainsMonoThin,
+  jetBrainsMonoExtraLight,
+  jetBrainsMonoLight,
+  jetBrainsMonoRegular,
+  jetBrainsMonoMedium,
+  jetBrainsMonoSemiBold,
+  jetBrainsMonoBold,
+  jetBrainsMonoExtraBold,
 };
 
 const fontWeight = {
@@ -47,6 +68,17 @@ const fonts = {
     extrabold: "workSansExtraBold",
     black: "workSansBlack",
   },
+  jetBrainsMono: {
+    thin: "jetBrainsMonoThin",
+    extralight: "jetBrainsMonoExtraLight",
+    light: "jetBrainsMonoLight",
+    regular: "jetBrainsMonoRegular",
+    medium: "jetBrainsMonoMedium",
+    semibold: "jetBrainsMonoSemiBold",
+    bold: "jetBrainsMonoBold",
+    extrabold: "jetBrainsMonoExtraBold",
+    black: undefined,
+  },
 };
 
 export const fontFamily = {
@@ -54,7 +86,7 @@ export const fontFamily = {
   serif: fonts.workSans,
   heading: fonts.workSans,
   body: fonts.workSans,
-  mono: fonts.workSans,
+  mono: fonts.jetBrainsMono,
 } as const;
 
 export const fontSize = {
@@ -94,7 +126,7 @@ export const typography = {
   serif: fonts.workSans,
   heading: fonts.workSans,
   body: fonts.workSans,
-  mono: fonts.workSans,
+  mono: fonts.jetBrainsMono,
 } as const;
 
 export type FontFamily = keyof typeof fontFamily;
