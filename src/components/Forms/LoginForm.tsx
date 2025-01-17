@@ -8,6 +8,7 @@ import {
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Button, Text, TextInput } from "@/components";
 import { spacing } from "@/styles";
+import { router } from "expo-router";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -24,20 +25,14 @@ AppState.addEventListener("change", (state) => {
 export default function LoginForm() {
   const { styles } = useStyles(stylesheet);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const defaultUser = {
+    email: process.env.EXPO_PUBLIC_DEFAULT_USER_EMAIL || "",
+    password: process.env.EXPO_PUBLIC_DEFAULT_USER_PASSWORD || "",
+  };
+
+  const [email, setEmail] = useState(defaultUser.email);
+  const [password, setPassword] = useState(defaultUser.password);
   const [loading, setLoading] = useState(false);
-
-  // async function signInWithEmail() {
-  //   setLoading(true);
-  //   const { error } = await supabase.auth.signInWithPassword({
-  //     email: email,
-  //     password: password,
-  //   });
-
-  //   if (error) Alert.alert(error.message);
-  //   setLoading(false);
-  // }
 
   return (
     <View style={styles.container}>
@@ -109,6 +104,9 @@ export default function LoginForm() {
               setLoading(true);
               const error = await signInWithEmail(email, password);
               if (error) Alert.alert(error.message);
+              if (!error) {
+                // router.push("(tabs)");
+              }
               setLoading(false);
             }}
             style={{ width: "100%" }}

@@ -5,7 +5,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const TabsLayout = () => {
   const {
-    styles: { screenContainerStyle, activeTint, tabBarStyle },
+    styles: { screenContainerStyle, activeTint, inactiveTint, tabBarStyle },
   } = useStyles(stylesheet);
 
   return (
@@ -13,6 +13,7 @@ const TabsLayout = () => {
       sceneContainerStyle={screenContainerStyle}
       screenOptions={{
         tabBarActiveTintColor: activeTint.color,
+        tabBarInactiveTintColor: inactiveTint.color,
         tabBarStyle,
         headerShown: false,
       }}
@@ -51,20 +52,34 @@ const TabsLayout = () => {
           ),
         }}
       />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          headerTitle: "Settings",
+          title: "Settings",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons size={24} name="cog" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 };
 
 const stylesheet = createStyleSheet(({ colors, spacing, name }) => ({
   screenContainerStyle: {
-    backgroundColor: name === "dark" ? colors.black : colors.gray[50],
+    backgroundColor: colors.black,
   },
   activeTint: {
-    color: name === "dark" ? colors.purple[600] : colors.purple[400],
+    color: colors.orange[600],
   },
+  inactiveTint: {
+    color: colors.neutral[500],
+  },
+
   tabBarStyle: {
-    backgroundColor: name === "dark" ? colors.black : colors.gray[50],
-    borderTopColor: colors.purple[500],
+    backgroundColor: colors.black,
+    borderTopColor: colors.orange[600],
     borderTopWidth: spacing["0.5"],
   },
 }));
