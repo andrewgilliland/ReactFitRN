@@ -44,3 +44,6 @@ export const upsertProfile = async (updates: {
   avatar_url: string;
   updated_at: Date;
 }) => await supabase.from("profiles").upsert(updates);
+
+export const getAllExercises = async () =>
+  await supabase.from("exercises").select("*");
