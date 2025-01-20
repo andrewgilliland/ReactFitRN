@@ -1,5 +1,5 @@
-import { SafeAreaView, ScrollView, View } from "react-native";
-import ExerciseList from "@/src/components/ExerciseList";
+import { FlatList, SafeAreaView, ScrollView, View } from "react-native";
+
 import IconInput from "@/src/components/Inputs/IconInput";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Feather from "@expo/vector-icons/Feather";
@@ -7,7 +7,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useEffect, useState } from "react";
 import { getAllExercises } from "@/src/lib/supabase";
 import { Text } from "@/components";
-import { ExerciseListItem } from "@/components";
+import { ExerciseList } from "@/components";
 
 export default function ExercisesScreen() {
   const [exercises, setExercises] = useState<any[]>([]);
@@ -61,11 +61,7 @@ export default function ExercisesScreen() {
         />
       </View>
 
-      <ScrollView style={{ padding: 36 }}>
-        {filteredExercises.map((exercise, index) => (
-          <ExerciseListItem exercise={exercise} key={index} />
-        ))}
-      </ScrollView>
+      <ExerciseList exercises={filteredExercises} />
     </SafeAreaView>
   );
 }
@@ -95,32 +91,6 @@ const stylesheet = createStyleSheet(
     },
     searchInputIcon: {
       color: colors.gray[500],
-    },
-    exerciseCard: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      backgroundColor: colors.neutral[800],
-      padding: spacing[5],
-      marginBottom: 24,
-      borderRadius: rounded["2xl"],
-      shadowColor: colors.neutral[900],
-      shadowOffset: {
-        width: spacing[1],
-        height: spacing[1],
-      },
-      shadowOpacity: 1,
-      shadowRadius: 0,
-    },
-    exerciseCardLink: {
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: colors.orange[600],
-      height: spacing[12],
-      width: spacing[12],
-      borderRadius: rounded.xl,
-    },
-    exerciseCardDifficultyIcon: {
-      color: colors.blue[700],
     },
   })
 );

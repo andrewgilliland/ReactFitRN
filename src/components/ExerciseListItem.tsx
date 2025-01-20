@@ -49,7 +49,6 @@ const stylesheet = createStyleSheet(
       alignItems: "center",
       backgroundColor: colors.neutral[800],
       padding: spacing[5],
-      marginBottom: 24,
       borderRadius: rounded["2xl"],
       shadowColor: colors.neutral[900],
       shadowOffset: {

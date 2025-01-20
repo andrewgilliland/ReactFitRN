@@ -1,23 +1,35 @@
 import { FC } from "react";
-import { ScrollView } from "react-native";
-import "@/src/styles/unistyles";
+import { FlatList, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { ExerciseListItem } from "@/src/components/ExerciseListItem";
+import { Exercise } from "@/types";
 
 type ExerciseListProps = {
-  exercises: any[];
+  exercises: Exercise[];
 };
 
-const ExerciseList: FC<ExerciseListProps> = ({ exercises }) => {
+export const ExerciseList: FC<ExerciseListProps> = ({ exercises }) => {
+  const {
+    styles: { contentContainer, itemSeparator },
+  } = useStyles(stylesheet);
+
   return (
-    <ScrollView
-      contentContainerStyle={{ paddingBottom: 80 }} // Adjust paddingBottom to account for tab navigator
-      style={{ paddingHorizontal: 24 }}
-    >
-      {exercises.map((exercise, index) => (
-        <ExerciseListItem key={index} exercise={exercise} />
-      ))}
-    </ScrollView>
+    <FlatList
+      data={exercises}
+      renderItem={({ item }) => <ExerciseListItem exercise={item} />}
+      keyExtractor={(item) => item.id}
+      contentContainerStyle={contentContainer}
+      ItemSeparatorComponent={() => <View style={itemSeparator} />}
+    />
   );
 };
 
-export default ExerciseList;
+const stylesheet = createStyleSheet(({ spacing }) => ({
+  contentContainer: {
+    paddingHorizontal: spacing[9],
+    paddingVertical: spacing[5],
+  },
+  itemSeparator: {
+    height: spacing[3],
+  },
+}));
