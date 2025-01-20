@@ -1,83 +1,87 @@
-import { FC } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Feather from "@expo/vector-icons/Feather";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Link } from "expo-router";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { Text } from "@/components";
+import { FC } from "react";
+import { Exercise } from "@/types";
 
 type ExerciseListItemProps = {
-  exercise: any;
-  onRemove?: (exercise: any) => void;
+  exercise: Exercise;
 };
 
-const ExerciseListItem: FC<ExerciseListItemProps> = ({
-  exercise,
-}: ExerciseListItemProps) => {
+export const ExerciseListItem: FC<ExerciseListItemProps> = ({ exercise }) => {
   const {
-    styles: {
-      container,
-      innerContainer,
-      icon,
-      name,
-      description,
-      chevronRight,
-    },
+    styles: { container, link, difficultyContainer, difficultyIcon },
   } = useStyles(stylesheet);
 
-  const exerciseTypeIcon = {
-    strength: (
-      <MaterialCommunityIcons name="arm-flex" size={24} color={icon.color} />
-    ),
-    cardio: <FontAwesome name="heartbeat" size={24} color={icon.color} />,
-  };
+  console.log("exercise: ", exercise);
 
   return (
     <View style={container}>
-      <View style={innerContainer}>
-        <Text>
-          {exerciseTypeIcon[exercise.type as keyof typeof exerciseTypeIcon]}
+      <View>
+        <Text size="lg" weight="semibold" color="neutral.100" key={exercise.id}>
+          {exercise.name}
         </Text>
-        <View>
-          <Text style={name}>{exercise.name}</Text>
-          <Text style={description}>{exercise.description}</Text>
+        <View style={difficultyContainer}>
+          <FontAwesome5
+            name="star"
+            size={difficultyIcon.height}
+            color={difficultyIcon.color}
+          />
+          <FontAwesome5 name="star" size={24} color={difficultyIcon.color} />
+          <FontAwesome5 name="star" size={24} color={difficultyIcon.color} />
         </View>
       </View>
-      <Link href={`/${exercise.name}`}>
-        <Feather name="chevron-right" size={24} color={chevronRight.color} />
-      </Link>
+      <View style={link}>
+        <Text weight="bold">{`>`}</Text>
+      </View>
     </View>
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
-  container: {
-    backgroundColor: colors.gray[50],
-    borderTopWidth: spacing[0.5],
-    borderColor: colors.gray[200],
-    padding: spacing[3],
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  innerContainer: {
-    flexDirection: "row",
-    gap: spacing[3],
-  },
-  icon: {
-    color: colors.gray[800],
-  },
-  name: {
-    fontSize: fontSize.lg,
-    fontWeight: "600",
-    color: colors.gray[700],
-  },
-  description: {
-    color: colors.gray[500],
-  },
-  chevronRight: {
-    color: colors.gray[500],
-  },
-}));
-
-export default ExerciseListItem;
+const stylesheet = createStyleSheet(
+  ({ colors, fontSize, spacing, rounded }) => ({
+    container: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: colors.neutral[800],
+      padding: spacing[5],
+      marginBottom: 24,
+      borderRadius: rounded["2xl"],
+      shadowColor: colors.neutral[900],
+      shadowOffset: {
+        width: spacing[1],
+        height: spacing[1],
+      },
+      shadowOpacity: 1,
+      shadowRadius: 0,
+    },
+    link: {
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: colors.orange[600],
+      height: spacing[12],
+      width: spacing[12],
+      borderRadius: rounded.xl,
+      shadowColor: colors.neutral[100],
+      shadowOffset: {
+        width: spacing["0.5"],
+        height: spacing["0.5"],
+      },
+      shadowOpacity: 1,
+      shadowRadius: 0,
+    },
+    difficultyContainer: {
+      marginTop: spacing[1],
+      flexDirection: "row",
+      gap: spacing[1],
+    },
+    difficultyIcon: {
+      color: colors.blue[700],
+      height: spacing[6],
+    },
+  })
+);

@@ -1,4 +1,4 @@
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import ExerciseList from "@/src/components/ExerciseList";
 import IconInput from "@/src/components/Inputs/IconInput";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
@@ -7,6 +7,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useEffect, useState } from "react";
 import { getAllExercises } from "@/src/lib/supabase";
 import { Text } from "@/components";
+import { ExerciseListItem } from "@/components";
 
 export default function ExercisesScreen() {
   const [exercises, setExercises] = useState<any[]>([]);
@@ -31,8 +32,6 @@ export default function ExercisesScreen() {
       headerIcon,
       searchInputContainer,
       searchInputIcon,
-      exerciseCard,
-      exerciseCardLink,
     },
   } = useStyles(stylesheet);
 
@@ -62,25 +61,11 @@ export default function ExercisesScreen() {
         />
       </View>
 
-      <View style={{ padding: 36 }}>
+      <ScrollView style={{ padding: 36 }}>
         {filteredExercises.map((exercise, index) => (
-          <View style={exerciseCard} key={index}>
-            <Text
-              size="lg"
-              weight="semibold"
-              color="neutral.100"
-              key={exercise.id}
-            >
-              {exercise.name}
-            </Text>
-            <View style={exerciseCardLink}>
-              <Text weight="bold">{`>`}</Text>
-            </View>
-          </View>
+          <ExerciseListItem exercise={exercise} key={index} />
         ))}
-      </View>
-
-      {/* <ExerciseList exercises={filteredExercises} /> */}
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -115,9 +100,16 @@ const stylesheet = createStyleSheet(
       flexDirection: "row",
       justifyContent: "space-between",
       backgroundColor: colors.neutral[800],
-      padding: 24,
+      padding: spacing[5],
       marginBottom: 24,
       borderRadius: rounded["2xl"],
+      shadowColor: colors.neutral[900],
+      shadowOffset: {
+        width: spacing[1],
+        height: spacing[1],
+      },
+      shadowOpacity: 1,
+      shadowRadius: 0,
     },
     exerciseCardLink: {
       justifyContent: "center",
@@ -126,6 +118,9 @@ const stylesheet = createStyleSheet(
       height: spacing[12],
       width: spacing[12],
       borderRadius: rounded.xl,
+    },
+    exerciseCardDifficultyIcon: {
+      color: colors.blue[700],
     },
   })
 );

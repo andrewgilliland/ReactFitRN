@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ScrollView } from "react-native";
 import "@/src/styles/unistyles";
-import ExerciseListItem from "@/src/components/ExerciseListItem";
+import { ExerciseListItem } from "@/src/components/ExerciseListItem";
 
 type ExerciseListProps = {
   exercises: any[];
