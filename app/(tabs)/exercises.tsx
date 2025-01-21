@@ -66,31 +66,29 @@ export default function ExercisesScreen() {
   );
 }
 
-const stylesheet = createStyleSheet(
-  ({ colors, fontSize, spacing, rounded }) => ({
-    headerContainer: {
-      borderWidth: 1,
-      paddingHorizontal: 36,
-      paddingVertical: 24,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
-    screenHeading: {
-      color: colors.gray[800],
-      fontSize: fontSize["2xl"],
-      fontWeight: "600",
-    },
-    headerIcon: {
-      color: colors.gray[800],
-    },
-    searchInputContainer: {
-      borderBottomWidth: 1,
-      paddingHorizontal: 36,
-      paddingVertical: 16,
-    },
-    searchInputIcon: {
-      color: colors.gray[500],
-    },
-  })
-);
+const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
+  headerContainer: {
+    borderWidth: 1,
+    paddingHorizontal: spacing[9],
+    paddingVertical: spacing[6],
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  screenHeading: {
+    color: colors.gray[800],
+    fontSize: fontSize["2xl"],
+    fontWeight: "600",
+  },
+  headerIcon: {
+    color: colors.gray[800],
+  },
+  searchInputContainer: {
+    borderBottomWidth: 1,
+    paddingHorizontal: spacing[9],
+    paddingVertical: spacing[4],
+  },
+  searchInputIcon: {
+    color: colors.gray[500],
+  },
+}));

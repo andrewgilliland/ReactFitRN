@@ -20,6 +20,7 @@ export const exercise = z.object({
   description: z.string(), // overview
   instructions: z.string(),
   image: z.string(),
+  imageUrls: z.array(z.string()), // Array of strings for image URLs
 });
 
 export type Exercise = z.infer<typeof exercise>;
