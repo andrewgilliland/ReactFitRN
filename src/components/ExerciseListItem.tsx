@@ -3,9 +3,10 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import { Text } from "@/components";
+import { Text } from "./Text";
 import { FC } from "react";
 import { Exercise } from "@/types";
+import { Link } from "expo-router";
 
 type ExerciseListItemProps = {
   exercise: Exercise;
@@ -35,7 +36,9 @@ export const ExerciseListItem: FC<ExerciseListItemProps> = ({ exercise }) => {
         </View>
       </View>
       <View style={link}>
-        <Text weight="bold">{`>`}</Text>
+        <Link href="/exercises/1">
+          <Text weight="bold">{`>`}</Text>
+        </Link>
       </View>
     </View>
   );

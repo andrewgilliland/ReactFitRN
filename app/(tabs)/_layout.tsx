@@ -23,7 +23,6 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="home"
         options={{
-          headerTitle: "Home",
           title: "Home",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={24} name="home" color={color} />
@@ -33,7 +32,6 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="workouts"
         options={{
-          headerTitle: "Workouts",
           title: "Workouts",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={24} name="dumbbell" color={color} />
@@ -43,7 +41,6 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="exercises"
         options={{
-          headerTitle: "Exercises",
           title: "Exercises",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
@@ -57,7 +54,6 @@ const TabsLayout = () => {
       <Tabs.Screen
         name="settings"
         options={{
-          headerTitle: "Settings",
           title: "Settings",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={24} name="cog" color={color} />
@@ -68,7 +64,7 @@ const TabsLayout = () => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, spacing, rounded }) => ({
+const stylesheet = createStyleSheet(({ colors, rounded }) => ({
   screenContainerStyle: {
     backgroundColor: colors.black,
   },

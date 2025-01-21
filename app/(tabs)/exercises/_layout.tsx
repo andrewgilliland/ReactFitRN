@@ -1,15 +1,15 @@
 import { Stack } from "expo-router";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
-const RootLayout = () => {
+const ExercisesLayout = () => {
   const {
     styles: { contentStyle },
   } = useStyles(stylesheet);
 
   return (
-    <Stack screenOptions={{ contentStyle }}>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    <Stack screenOptions={{ contentStyle, headerShown: true }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="[id]" />
     </Stack>
   );
 };
@@ -20,4 +20,4 @@ const stylesheet = createStyleSheet(({ colors }) => ({
   },
 }));
 
-export default RootLayout;
+export default ExercisesLayout;
