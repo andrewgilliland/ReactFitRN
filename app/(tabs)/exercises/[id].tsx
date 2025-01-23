@@ -1,9 +1,5 @@
-import { Text, View } from "react-native";
+import ExerciseScreen from "@/src/screens/ExerciseScreen";
 
 export default function Exercise() {
-  return (
-    <View>
-      <Text style={{ color: "white" }}>Exercise</Text>
-    </View>
-  );
+  return <ExerciseScreen />;
 }

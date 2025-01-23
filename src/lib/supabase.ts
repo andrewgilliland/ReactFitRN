@@ -47,3 +47,6 @@ export const upsertProfile = async (updates: {
 
 export const getAllExercises = async () =>
   await supabase.from("exercises").select("*");
+
+export const getExerciseById = async (id: string) =>
+  await supabase.from("exercises").select("*").eq("id", id).single();

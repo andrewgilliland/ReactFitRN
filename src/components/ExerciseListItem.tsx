@@ -17,8 +17,6 @@ export const ExerciseListItem: FC<ExerciseListItemProps> = ({ exercise }) => {
     styles: { container, link, difficultyContainer, difficultyIcon },
   } = useStyles(stylesheet);
 
-  console.log("exercise: ", exercise);
-
   return (
     <View style={container}>
       <View>
@@ -36,7 +34,7 @@ export const ExerciseListItem: FC<ExerciseListItemProps> = ({ exercise }) => {
         </View>
       </View>
       <View style={link}>
-        <Link href="/exercises/1">
+        <Link href={`/exercises/${exercise.id}`}>
           <Text weight="bold">{`>`}</Text>
         </Link>
       </View>
