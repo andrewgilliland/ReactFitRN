@@ -7,7 +7,7 @@ const ExercisesLayout = () => {
   } = useStyles(stylesheet);
 
   return (
-    <Stack screenOptions={{ contentStyle, headerShown: true }}>
+    <Stack screenOptions={{ contentStyle, headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="[id]" />
     </Stack>

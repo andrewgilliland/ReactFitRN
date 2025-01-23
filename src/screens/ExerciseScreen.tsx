@@ -1,13 +1,11 @@
-import { SafeAreaView, View } from "react-native";
-import IconInput from "@/src/components/Inputs/IconInput";
-import { createStyleSheet, useStyles } from "react-native-unistyles";
-import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useEffect, useState } from "react";
+import { SafeAreaView, View } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { getExerciseById } from "@/src/lib/supabase";
-import { Text } from "@/components";
-
-import { useLocalSearchParams } from "expo-router";
+import { Button, Text } from "@/components";
+import { spacing } from "../styles";
 
 export default function ExerciseScreen() {
   const [exercise, setExercise] = useState<any>([]);
@@ -27,43 +25,32 @@ export default function ExerciseScreen() {
   }, []);
 
   const {
-    styles: {
-      headerContainer,
-      screenHeading,
-      headerIcon,
-      searchInputContainer,
-      searchInputIcon,
-    },
+    styles: { container },
   } = useStyles(stylesheet);
-
-  const searchValueState = useState("");
 
   return (
     <SafeAreaView>
-      <View style={headerContainer}>
-        <Text style={screenHeading}>Exercises</Text>
-        <MaterialCommunityIcons
-          size={24}
-          name="weight-lifter"
-          color={headerIcon.color}
-        />
-      </View>
-      <View style={searchInputContainer}>
-        <IconInput
-          icon={
-            <Feather size={18} name="search" color={searchInputIcon.color} />
-          }
-          placeholder="Search Exercises"
-          valueState={searchValueState}
-        />
-      </View>
+      <View style={container}>
+        <Button onPress={() => router.back()}>Go Back</Button>
 
-      <Text>{exercise.name}</Text>
+        <Text
+          weight="bold"
+          color="neutral.100"
+          size="2xl"
+          style={{ marginTop: spacing[6], textTransform: "capitalize" }}
+        >
+          {exercise.name}
+        </Text>
+      </View>
     </SafeAreaView>
   );
 }
 
 const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
+  container: {
+    paddingHorizontal: spacing[9],
+    paddingVertical: spacing[6],
+  },
   headerContainer: {
     borderWidth: 1,
     paddingHorizontal: spacing[9],
@@ -71,21 +58,5 @@ const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  },
-  screenHeading: {
-    color: colors.gray[800],
-    fontSize: fontSize["2xl"],
-    fontWeight: "600",
-  },
-  headerIcon: {
-    color: colors.gray[800],
-  },
-  searchInputContainer: {
-    borderBottomWidth: 1,
-    paddingHorizontal: spacing[9],
-    paddingVertical: spacing[4],
-  },
-  searchInputIcon: {
-    color: colors.gray[500],
   },
 }));
