@@ -6,7 +6,6 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useEffect, useState } from "react";
 import { getAllExercises } from "@/src/lib/supabase";
-import { Text } from "@/components";
 import { ExerciseList } from "@/components";
 
 export default function ExercisesScreen() {
@@ -43,19 +42,8 @@ export default function ExercisesScreen() {
 
   return (
     <SafeAreaView>
-      <View style={headerContainer}>
-        <Text style={screenHeading}>Exercises</Text>
-        <MaterialCommunityIcons
-          size={24}
-          name="weight-lifter"
-          color={headerIcon.color}
-        />
-      </View>
       <View style={searchInputContainer}>
         <IconInput
-          icon={
-            <Feather size={18} name="search" color={searchInputIcon.color} />
-          }
           placeholder="Search Exercises"
           valueState={searchValueState}
         />

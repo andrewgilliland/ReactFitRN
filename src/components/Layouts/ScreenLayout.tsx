@@ -42,9 +42,6 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
         </View>
         <View style={searchInputContainer}>
           <IconInput
-            icon={
-              <Feather size={18} name="search" color={searchInputIcon.color} />
-            }
             placeholder={`Search ${title}`}
             valueState={searchValueState}
           />
@@ -57,7 +54,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
 
 const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
   container: {
-    backgroundColor: name === "dark" ? colors.black : colors.gray[50],
+    // backgroundColor: name === "dark" ? colors.black : colors.gray[50],
   },
   headerContainer: {
     paddingHorizontal: spacing[9],

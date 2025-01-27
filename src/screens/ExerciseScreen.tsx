@@ -33,14 +33,16 @@ export default function ExerciseScreen() {
       <View style={container}>
         <Button onPress={() => router.back()}>Go Back</Button>
 
-        <Text
-          weight="bold"
-          color="neutral.100"
-          size="2xl"
-          style={{ marginTop: spacing[6], textTransform: "capitalize" }}
-        >
-          {exercise.name}
-        </Text>
+        <View>
+          <Text
+            weight="bold"
+            color="neutral.100"
+            size="2xl"
+            style={{ marginTop: spacing[6], textTransform: "capitalize" }}
+          >
+            {exercise.name}
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
