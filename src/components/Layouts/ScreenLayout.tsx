@@ -1,8 +1,7 @@
 import { ComponentProps, FC, ReactNode } from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import IconInput from "@/src/components/Inputs/IconInput";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 type ScreenLayoutProps = {
@@ -14,32 +13,16 @@ type ScreenLayoutProps = {
 
 const ScreenLayout: FC<ScreenLayoutProps> = ({
   title,
-  icon,
   children,
   searchValueState,
 }) => {
   const {
-    styles: {
-      container,
-      headerContainer,
-      screenHeading,
-      headerIcon,
-      searchInputContainer,
-      searchInputIcon,
-    },
+    styles: { searchInputContainer, childrenContainer },
   } = useStyles(stylesheet);
 
   return (
     <SafeAreaView>
-      <View style={container}>
-        <View style={headerContainer}>
-          <Text style={screenHeading}>{title}</Text>
-          <MaterialCommunityIcons
-            size={24}
-            name={icon}
-            color={headerIcon.color}
-          />
-        </View>
+      <View>
         <View style={searchInputContainer}>
           <IconInput
             placeholder={`Search ${title}`}
@@ -47,38 +30,18 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
           />
         </View>
       </View>
-      {children}
+      <View style={childrenContainer}>{children}</View>
     </SafeAreaView>
   );
 };
 
 const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
-  container: {
-    // backgroundColor: name === "dark" ? colors.black : colors.gray[50],
-  },
-  headerContainer: {
-    paddingHorizontal: spacing[9],
-    paddingTop: spacing[6],
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  screenHeading: {
-    color: name === "dark" ? colors.white : colors.gray[800],
-    fontSize: fontSize["2xl"],
-    fontWeight: "600",
-  },
-  headerIcon: {
-    color: name === "dark" ? colors.white : colors.gray[800],
-  },
   searchInputContainer: {
-    borderColor: name === "dark" ? colors.purple[600] : colors.purple[400],
-    borderBottomWidth: spacing["0.5"],
     paddingHorizontal: spacing[9],
     paddingVertical: spacing[4],
   },
-  searchInputIcon: {
-    color: colors.gray[500],
+  childrenContainer: {
+    paddingHorizontal: spacing[9],
   },
 }));
 
