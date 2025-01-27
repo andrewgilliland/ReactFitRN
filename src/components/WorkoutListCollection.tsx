@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { ScrollView, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import Card from "./Card";
 import { Text } from "./Text";
 import { Workout, WorkoutDictionary } from "@/types";
+import WorkoutList from "./WorkoutList";
 
 type WorkoutListCollectionProps = {
   workouts: Workout[];
@@ -13,7 +13,7 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
   workouts,
 }) => {
   const {
-    styles: { container, scrollView },
+    styles: { container },
   } = useStyles(stylesheet);
 
   /** An object with the workouts 
@@ -38,24 +38,15 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
           >
             {type}
           </Text>
-          {/* WorkoutsList */}
-          <ScrollView style={scrollView}>
-            {workouts.map((workout, index) => (
-              <Card key={index} item={workout} />
-            ))}
-          </ScrollView>
+          <WorkoutList workouts={workouts} />
         </View>
       ))}
     </ScrollView>
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
+const stylesheet = createStyleSheet(({ spacing }) => ({
   container: {
-    marginVertical: spacing[3],
-  },
-
-  scrollView: {
     marginVertical: spacing[3],
   },
 }));
