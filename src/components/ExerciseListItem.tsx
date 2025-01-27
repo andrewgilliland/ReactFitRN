@@ -20,7 +20,12 @@ export const ExerciseListItem: FC<ExerciseListItemProps> = ({ exercise }) => {
   return (
     <View style={container}>
       <View>
-        <Text size="lg" weight="semibold" color="neutral.100" key={exercise.id}>
+        <Text
+          size="lg"
+          weight="semibold"
+          color="neutral.100"
+          style={{ textTransform: "capitalize" }}
+        >
           {exercise.name}
         </Text>
         <View style={difficultyContainer}>

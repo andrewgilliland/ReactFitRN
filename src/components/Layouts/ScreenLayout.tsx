@@ -40,9 +40,7 @@ const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
     paddingHorizontal: spacing[9],
     paddingVertical: spacing[4],
   },
-  childrenContainer: {
-    paddingHorizontal: spacing[9],
-  },
+  childrenContainer: {},
 }));
 
 export default ScreenLayout;

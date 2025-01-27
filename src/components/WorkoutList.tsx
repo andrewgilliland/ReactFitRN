@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FlatList, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import Card from "./Card";
+import WorkoutCard from "./WorkoutCard";
 import { Workout } from "@/types";
 
 type WorkoutListProps = {
@@ -16,7 +16,7 @@ const WorkoutList: FC<WorkoutListProps> = ({ workouts }) => {
   return (
     <FlatList
       data={workouts}
-      renderItem={({ item }) => <Card item={item} />}
+      renderItem={({ item }) => <WorkoutCard item={item} />}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={contentContainer}
       ItemSeparatorComponent={() => <View style={itemSeparator} />}
@@ -26,7 +26,8 @@ const WorkoutList: FC<WorkoutListProps> = ({ workouts }) => {
 
 const stylesheet = createStyleSheet(({ spacing }) => ({
   contentContainer: {
-    marginVertical: spacing[3],
+    paddingHorizontal: spacing[9],
+    paddingVertical: spacing[5],
   },
   itemSeparator: {
     height: spacing[3],
