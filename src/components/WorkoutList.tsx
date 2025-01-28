@@ -16,7 +16,7 @@ const WorkoutList: FC<WorkoutListProps> = ({ workouts }) => {
   return (
     <FlatList
       data={workouts}
-      renderItem={({ item }) => <WorkoutCard item={item} />}
+      renderItem={({ item }) => <WorkoutCard workout={item} />}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={contentContainer}
       ItemSeparatorComponent={() => <View style={itemSeparator} />}

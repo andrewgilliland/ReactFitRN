@@ -4,6 +4,7 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "./Text";
 import { Workout, WorkoutDictionary } from "@/types";
 import WorkoutList from "./WorkoutList";
+import { spacing } from "../styles";
 
 type WorkoutListCollectionProps = {
   workouts: Workout[];
@@ -34,7 +35,7 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
           <Text
             size="2xl"
             weight="semibold"
-            style={{ textTransform: "capitalize" }}
+            style={{ textTransform: "capitalize", marginLeft: spacing[9] }}
           >
             {type}
           </Text>

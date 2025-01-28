@@ -14,7 +14,11 @@ const WorkoutsScreen = () => {
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
       exercises: [1, 2, 3],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
     {
       id: 2,
@@ -23,7 +27,11 @@ const WorkoutsScreen = () => {
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
       exercises: [4, 5, 6],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
     {
       id: 3,
@@ -32,7 +40,11 @@ const WorkoutsScreen = () => {
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
       exercises: [7, 8, 9],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
     {
       id: 4,
@@ -41,7 +53,11 @@ const WorkoutsScreen = () => {
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
       exercises: [10, 11, 12],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
     {
       id: 5,
@@ -50,7 +66,11 @@ const WorkoutsScreen = () => {
       type: "cardio",
       equipment: ["bodyweight"],
       exercises: [13, 14, 15],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
     {
       id: 6,
@@ -59,7 +79,11 @@ const WorkoutsScreen = () => {
       type: "flexibility",
       equipment: ["bodyweight"],
       exercises: [16, 17, 18],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
     {
       id: 7,
@@ -68,7 +92,11 @@ const WorkoutsScreen = () => {
       type: "cardio",
       equipment: ["bodyweight"],
       exercises: [19, 20, 21],
-      sets: 12,
+      sets: {
+        1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
+        2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
+        3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
+      },
     },
   ];
 

@@ -8,13 +8,20 @@ import { spacing } from "../styles";
 import { workout } from "../types/Workout";
 
 type CardProps = {
-  item: Workout;
+  workout: Workout;
 };
 
-const WorkoutCard: FC<CardProps> = ({ item }) => {
+const WorkoutCard: FC<CardProps> = ({ workout }) => {
   const {
     styles: { container, pill, icon, link },
   } = useStyles(stylesheet);
+
+  // Get the number of sets in the workout
+  // by countuing the number of objects in the arrays of sets
+  const setCount = Object.values(workout.sets).reduce(
+    (acc, sets) => acc + sets.length,
+    0
+  );
 
   return (
     <View style={container}>
@@ -25,7 +32,7 @@ const WorkoutCard: FC<CardProps> = ({ item }) => {
           weight="medium"
           style={{ textTransform: "capitalize" }}
         >
-          {item.type}
+          {workout.type}
         </Text>
       </View>
       <View
@@ -38,7 +45,7 @@ const WorkoutCard: FC<CardProps> = ({ item }) => {
       >
         <View>
           <Text color="neutral.100" size="2xl" weight="bold">
-            {item.title}
+            {workout.title}
           </Text>
           <View
             style={{
@@ -48,7 +55,7 @@ const WorkoutCard: FC<CardProps> = ({ item }) => {
             }}
           >
             <Text color="neutral.300" size="base" weight="medium">
-              {`${item.sets.toString()} sets`}
+              {`${setCount} sets`}
             </Text>
             <Text color="neutral.300" size="base" weight="medium">
               30min
