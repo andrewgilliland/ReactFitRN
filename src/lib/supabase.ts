@@ -50,3 +50,6 @@ export const getAllExercises = async () =>
 
 export const getExerciseById = async (id: string) =>
   await supabase.from("exercises").select("*").eq("id", id).single();
+
+export const getWorkoutById = async (id: string) =>
+  await supabase.from("workouts").select("*").eq("id", id).single();

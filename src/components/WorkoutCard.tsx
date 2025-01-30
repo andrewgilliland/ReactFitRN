@@ -66,9 +66,7 @@ const WorkoutCard: FC<CardProps> = ({ workout }) => {
           </View>
         </View>
         <View style={linkButton}>
-          <Link style={link} href={`/exercises/${workout.id}`}></Link>
-          {/* <Text weight="bold" style={linkIcon}>{`>`}</Text> */}
-
+          <Link style={link} href={`/workouts/${workout.id}`}></Link>
           <Entypo
             name="chevron-right"
             size={32}
