@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
-import {
-  Dimensions,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  View,
-} from "react-native";
+import { Dimensions, ScrollView, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { getExerciseById, getWorkoutById } from "@/src/lib/supabase";
 import { Button, Text } from "@/components";
 import { colors, rounded, spacing } from "../styles";
-import { Workout, workout } from "../types/Workout";
+import { Workout } from "../types/Workout";
 import Entypo from "@expo/vector-icons/Entypo";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -66,7 +60,10 @@ export default function WorkoutScreen() {
       >
         <Entypo name="chevron-left" size={24} color="white" />
       </Button>
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: spacing[56] }}
+        style={{ height: screenHeight }}
+      >
         <View
           style={[
             { height: headerHeight, backgroundColor: colors.orange[600] },
@@ -161,8 +158,7 @@ export default function WorkoutScreen() {
           <View
             style={{
               alignSelf: "flex-start",
-              borderWidth: 1,
-              borderColor: "red",
+
               marginTop: spacing[6],
               width: "100%",
             }}
@@ -182,28 +178,58 @@ export default function WorkoutScreen() {
               >
                 <View
                   style={{
+                    flexDirection: "row",
+                    alignItems: "center",
                     backgroundColor: colors.neutral[800],
-                    // borderColor: "blue",
-                    // borderWidth: 1,
                     paddingHorizontal: spacing[4],
-                    paddingVertical: spacing[2],
+                    paddingVertical: spacing[4],
                     width: "100%",
-                    borderRadius: rounded["2xl"],
+                    borderRadius: rounded["xl"],
+                    gap: spacing[4],
                   }}
                 >
-                  <Text color="neutral.100" size="2xl" weight="bold">
-                    {exerciseId}
-                  </Text>
                   <View
                     style={{
-                      flexDirection: "row",
+                      justifyContent: "center",
                       alignItems: "center",
-                      gap: spacing[4],
+                      height: spacing[14],
+                      width: spacing[14],
+                      backgroundColor: colors.neutral[700],
+                      borderRadius: rounded["xl"],
                     }}
                   >
-                    <Text color="neutral.300" size="base" weight="medium">
-                      {`${sets.length} sets`}
+                    <MaterialCommunityIcons
+                      name="dumbbell"
+                      size={24}
+                      color={colors.neutral[100]}
+                    />
+                  </View>
+                  <View>
+                    <Text color="neutral.100" size="xl" weight="bold">
+                      {/* {exerciseId} */}
+                      Dumbbell Bench Press
                     </Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: spacing[1],
+                      }}
+                    >
+                      <Text color="neutral.300" size="base" weight="medium">
+                        Sets:
+                      </Text>
+                      {sets.map((set, index) => (
+                        <Text
+                          key={index}
+                          color="neutral.300"
+                          size="base"
+                          weight="medium"
+                        >
+                          {`${set.reps.toString()} reps`}
+                        </Text>
+                      ))}
+                    </View>
                   </View>
                 </View>
               </View>
