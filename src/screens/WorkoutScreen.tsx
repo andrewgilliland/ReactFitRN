@@ -69,7 +69,7 @@ export default function WorkoutScreen() {
       <ScrollView>
         <View
           style={[
-            { height: headerHeight, backgroundColor: colors.orange[700] },
+            { height: headerHeight, backgroundColor: colors.orange[600] },
             container,
           ]}
         ></View>
@@ -142,6 +142,7 @@ export default function WorkoutScreen() {
               <Text color="neutral.400" weight="semibold">{`30min`}</Text>
             </View>
           </View>
+
           <View
             style={{
               marginTop: spacing[6],
@@ -156,6 +157,57 @@ export default function WorkoutScreen() {
             >
               {workout.description}
             </Text>
+          </View>
+          <View
+            style={{
+              alignSelf: "flex-start",
+              borderWidth: 1,
+              borderColor: "red",
+              marginTop: spacing[6],
+              width: "100%",
+            }}
+          >
+            <Text weight="semibold" style={{ marginTop: spacing[6] }}>
+              Exercises
+            </Text>
+            {Object.entries(workout.sets).map(([exerciseId, sets]) => (
+              <View
+                key={exerciseId}
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: spacing[4],
+                }}
+              >
+                <View
+                  style={{
+                    backgroundColor: colors.neutral[800],
+                    // borderColor: "blue",
+                    // borderWidth: 1,
+                    paddingHorizontal: spacing[4],
+                    paddingVertical: spacing[2],
+                    width: "100%",
+                    borderRadius: rounded["2xl"],
+                  }}
+                >
+                  <Text color="neutral.100" size="2xl" weight="bold">
+                    {exerciseId}
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: spacing[4],
+                    }}
+                  >
+                    <Text color="neutral.300" size="base" weight="medium">
+                      {`${sets.length} sets`}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            ))}
           </View>
         </View>
       </ScrollView>
