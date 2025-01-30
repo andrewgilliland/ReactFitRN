@@ -2,10 +2,13 @@ import { FC } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Entypo from "@expo/vector-icons/Entypo";
 import { Workout } from "../types";
 import { Text } from "./Text";
 import { spacing } from "../styles";
 import { workout } from "../types/Workout";
+import { Link } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 
 type CardProps = {
   workout: Workout;
@@ -13,7 +16,7 @@ type CardProps = {
 
 const WorkoutCard: FC<CardProps> = ({ workout }) => {
   const {
-    styles: { container, pill, icon, link },
+    styles: { container, pill, linkButton, link, linkIcon },
   } = useStyles(stylesheet);
 
   // Get the number of sets in the workout
@@ -62,7 +65,17 @@ const WorkoutCard: FC<CardProps> = ({ workout }) => {
             </Text>
           </View>
         </View>
-        <View style={link}></View>
+        <View style={linkButton}>
+          <Link style={link} href={`/exercises/${workout.id}`}></Link>
+          {/* <Text weight="bold" style={linkIcon}>{`>`}</Text> */}
+
+          <Entypo
+            name="chevron-right"
+            size={32}
+            color="white"
+            style={linkIcon}
+          />
+        </View>
       </View>
     </View>
   );
@@ -89,18 +102,25 @@ const stylesheet = createStyleSheet(({ colors, spacing, rounded, name }) => ({
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[2],
   },
-  icon: {
-    color: name === "dark" ? colors.white : colors.black,
-    opacity: 0.25,
-    position: "absolute",
-    right: 0,
-    bottom: 0,
-  },
-  link: {
-    backgroundColor: colors.orange[600],
+  linkButton: {
+    borderRadius: rounded.xl,
     height: spacing[14],
     width: spacing[14],
-    borderRadius: rounded.xl,
+    backgroundColor: colors.orange[600],
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  link: {
+    position: "relative",
+    backgroundColor: "transparent",
+    height: "100%",
+    width: "100%",
+    zIndex: 9999,
+  },
+  linkIcon: {
+    position: "absolute",
+    zIndex: 100,
   },
 }));
 
