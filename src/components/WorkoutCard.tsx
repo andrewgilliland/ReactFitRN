@@ -7,8 +7,9 @@ import { Workout } from "../types";
 import { Text } from "./Text";
 import { spacing } from "../styles";
 import { workout } from "../types/Workout";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import Feather from "@expo/vector-icons/Feather";
+import { Button } from "./Button";
 
 type CardProps = {
   workout: Workout;
@@ -65,15 +66,13 @@ const WorkoutCard: FC<CardProps> = ({ workout }) => {
             </Text>
           </View>
         </View>
-        <View style={linkButton}>
-          <Link style={link} href={`/workouts/${workout.id}`}></Link>
-          <Entypo
-            name="chevron-right"
-            size={32}
-            color="white"
-            style={linkIcon}
-          />
-        </View>
+
+        <Button
+          size="square"
+          onPress={() => router.push(`/workouts/${workout.id}`)}
+        >
+          <Entypo name="chevron-right" size={24} color="white" />
+        </Button>
       </View>
     </View>
   );

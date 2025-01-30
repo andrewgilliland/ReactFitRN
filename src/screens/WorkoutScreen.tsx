@@ -7,6 +7,7 @@ import { getExerciseById, getWorkoutById } from "@/src/lib/supabase";
 import { Button, Text } from "@/components";
 import { spacing } from "../styles";
 import { Workout, workout } from "../types/Workout";
+import Entypo from "@expo/vector-icons/Entypo";
 
 export default function WorkoutScreen() {
   const [workout, setWorkout] = useState<Workout>({
@@ -43,7 +44,9 @@ export default function WorkoutScreen() {
   return (
     <SafeAreaView>
       <View style={container}>
-        <Button onPress={() => router.back()}>Go Back</Button>
+        <Button size="square" theme="neutral" onPress={() => router.back()}>
+          <Entypo name="chevron-left" size={24} color="white" />
+        </Button>
 
         <View>
           <Text

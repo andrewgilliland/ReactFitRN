@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Pressable, StyleProp, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "./Text";
 import { ColorCode, getColorValue, colors, spacing, fontSize } from "@/styles";
 
 type ButtonProps = {
-  children: string;
+  children: ReactNode;
   /**
    * Override the default theme colors of the button.
    */
@@ -13,7 +13,7 @@ type ButtonProps = {
   disabled?: boolean;
   onPress: () => void;
   theme?: "primary" | "secondary" | "neutral";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "square";
   /**
    * An optional style override useful for padding & margin.
    */
@@ -36,7 +36,7 @@ export const Button: FC<ButtonProps> = ({
   const themes = {
     primary: colors.orange[600],
     secondary: colors.blue[700],
-    neutral: colors.neutral[900],
+    neutral: colors.neutral[800],
   };
 
   const buttonSizes = {
@@ -46,12 +46,14 @@ export const Button: FC<ButtonProps> = ({
       paddingHorizontal: spacing[6],
       paddingVertical: spacing[3],
     },
+    square: { paddingHorizontal: spacing[4], paddingVertical: spacing[4] },
   };
 
   const textSizes = {
     sm: { fontSize: fontSize.sm },
     md: { fontSize: fontSize.base },
     lg: { fontSize: fontSize.xl },
+    square: { fontSize: fontSize.base },
   };
 
   const $style = [
@@ -67,9 +69,13 @@ export const Button: FC<ButtonProps> = ({
       style={({ pressed }) => [$style, pressed && buttonPressed]}
       disabled={disabled}
     >
-      <Text weight="bold" style={[text, textSizes[size]]}>
-        {children}
-      </Text>
+      {typeof children === "string" ? (
+        <Text weight="bold" style={[text, textSizes[size]]}>
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
     </Pressable>
   );
 };
