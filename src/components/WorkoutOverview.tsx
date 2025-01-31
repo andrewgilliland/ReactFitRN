@@ -13,7 +13,7 @@ type WorkoutOverviewProps = {
 
 export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
   const {
-    styles: { container, contentContainer, pill },
+    styles: { container, pill },
   } = useStyles(stylesheet);
 
   const setCount = Object.values(workout.sets).reduce(
@@ -22,7 +22,7 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
   );
 
   return (
-    <View style={[container, contentContainer]}>
+    <View style={container}>
       <View style={[pill, { marginTop: spacing[4] }]}>
         <Text
           color="orange.500"
@@ -163,24 +163,69 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
                   borderRadius: rounded["xl"],
                 }}
               >
-                <Text color="neutral.300" weight="semibold">
-                  Set
-                </Text>
+                <View style={{ flexDirection: "row", gap: spacing[4] }}>
+                  <Text color="neutral.300" weight="semibold">
+                    Set
+                  </Text>
+                  <Text color="neutral.100" weight="medium">
+                    Reps
+                  </Text>
+                </View>
                 {sets.map((set, index) => (
                   <View
                     style={{
-                      height: spacing[10],
-                      width: spacing[10],
-                      backgroundColor: colors.neutral[700],
-                      borderRadius: rounded["lg"],
-                      justifyContent: "center",
+                      flexDirection: "row",
                       alignItems: "center",
+                      gap: spacing[4],
                     }}
                     key={index}
                   >
-                    <Text color="neutral.300" size="base" weight="medium">
-                      {`${set.reps.toString()}`}
-                    </Text>
+                    <View
+                      style={{
+                        position: "relative",
+                        alignItems: "center",
+                      }}
+                    >
+                      <View
+                        style={{
+                          height: spacing[6],
+                          width: spacing[6],
+                          backgroundColor: colors.orange[600],
+                          borderRadius: rounded["lg"],
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Text color="neutral.100" size="sm" weight="bold">
+                          {`${index + 1}`}
+                        </Text>
+                      </View>
+                      {index < sets.length - 1 && (
+                        <View
+                          style={{
+                            position: "absolute",
+                            backgroundColor: colors.orange[600],
+                            height: spacing[6],
+                            width: spacing["0.5"],
+                            top: 26,
+                          }}
+                        />
+                      )}
+                    </View>
+                    <View
+                      style={{
+                        height: spacing[10],
+                        width: spacing[10],
+                        backgroundColor: colors.neutral[700],
+                        borderRadius: rounded["lg"],
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Text color="neutral.100" size="base" weight="medium">
+                        {`${set.reps.toString()}`}
+                      </Text>
+                    </View>
                   </View>
                 ))}
               </View>
@@ -196,8 +241,6 @@ const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
   container: {
     paddingHorizontal: spacing[9],
     paddingVertical: spacing[6],
-  },
-  contentContainer: {
     borderRadius: rounded.xl,
     backgroundColor: colors.neutral[950],
     marginTop: -spacing[6],
