@@ -6,3 +6,4 @@ export { ExerciseList } from "./ExerciseList";
 
 export { WorkoutOverview } from "./WorkoutOverview";
 export { WorkoutExercises } from "./WorkoutExercises";
+export { WorkoutExercise } from "./WorkoutExercise";

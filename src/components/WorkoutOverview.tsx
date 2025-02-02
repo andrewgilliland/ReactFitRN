@@ -112,14 +112,6 @@ const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  headerContainer: {
-    borderWidth: 1,
-    paddingHorizontal: spacing[9],
-    paddingVertical: spacing[6],
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
   pill: {
     backgroundColor: colors.orange[950],
     borderRadius: rounded.xl,
