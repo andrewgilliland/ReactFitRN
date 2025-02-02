@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Text as RNText, StyleProp, TextStyle } from "react-native";
 import {
   ColorCode,
@@ -20,7 +20,7 @@ type TextProps = {
    * An optional style override useful for padding & margin.
    */
   style?: StyleProp<TextStyle>;
-  children: string;
+  children: ReactNode;
 };
 
 export const Text: FC<TextProps> = ({

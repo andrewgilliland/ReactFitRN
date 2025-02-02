@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { AntDesign } from "@expo/vector-icons";
@@ -7,6 +7,7 @@ import { Text } from "./Text";
 import { Workout } from "@/types";
 import { colors, rounded, spacing } from "@/styles";
 import { WorkoutExercises } from "./WorkoutExercises";
+import { Pill } from "./Pill";
 
 type WorkoutOverviewProps = {
   workout: Workout;
@@ -14,7 +15,7 @@ type WorkoutOverviewProps = {
 
 export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
   const {
-    styles: { container, pill },
+    styles: { container },
   } = useStyles(stylesheet);
 
   const setCount = Object.values(workout.sets).reduce(
@@ -24,16 +25,7 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
 
   return (
     <View style={container}>
-      <View style={[pill, { marginTop: spacing[4] }]}>
-        <Text
-          color="orange.500"
-          size="sm"
-          weight="bold"
-          style={{ textTransform: "capitalize" }}
-        >
-          {workout.type}
-        </Text>
-      </View>
+      <Pill style={{ marginTop: spacing[4] }}>{workout.type}</Pill>
       <Text
         weight="bold"
         color="neutral.100"

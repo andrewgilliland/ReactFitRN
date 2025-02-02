@@ -1,10 +1,11 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { View } from "react-native";
 import { Text } from "./Text";
 import { spacing } from "@/styles";
 import { WorkoutExercise } from "./WorkoutExercise";
 
 type WorkoutExercisesProps = {
+  // Todo: Define the type for WorkoutExercise
   workoutExercises: Record<
     string,
     {
