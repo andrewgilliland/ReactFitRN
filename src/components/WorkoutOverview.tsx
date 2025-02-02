@@ -18,21 +18,23 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
     styles: { container },
   } = useStyles(stylesheet);
 
-  const setCount = Object.values(workout.sets).reduce(
+  const { sets, type, title, description } = workout;
+
+  const setCount = Object.values(sets).reduce(
     (acc, sets) => acc + sets.length,
     0
   );
 
   return (
     <View style={container}>
-      <Pill style={{ marginTop: spacing[4] }}>{workout.type}</Pill>
+      <Pill style={{ marginTop: spacing[4] }}>{type}</Pill>
       <Text
         weight="bold"
         color="neutral.100"
         size="3xl"
         style={{ marginTop: spacing[6], textTransform: "capitalize" }}
       >
-        {workout.title}
+        {title}
       </Text>
       <View
         style={{
@@ -59,7 +61,7 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
           <Text
             color="neutral.400"
             weight="semibold"
-          >{`${setCount.toString()} sets`}</Text>
+          >{`${setCount} sets`}</Text>
         </View>
         <View
           style={{
@@ -86,15 +88,15 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
           weight="regular"
           style={{ marginTop: spacing[4] }}
         >
-          {workout.description}
+          {description}
         </Text>
       </View>
-      <WorkoutExercises workoutExercises={workout.sets} />
+      <WorkoutExercises workoutExercises={sets} />
     </View>
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, fontSize, spacing }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing }) => ({
   container: {
     paddingHorizontal: spacing[9],
     paddingVertical: spacing[6],

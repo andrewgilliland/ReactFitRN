@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Dimensions, ScrollView, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { getExerciseById, getWorkoutById } from "@/src/lib/supabase";
+import { getWorkoutById } from "@/src/lib/supabase";
 import { Button } from "@/components";
-import { colors, rounded, spacing } from "@/styles";
+import { colors, spacing } from "@/styles";
 import { Workout } from "@/types";
 import Entypo from "@expo/vector-icons/Entypo";
 import { WorkoutOverview } from "../components/WorkoutOverview";
@@ -50,17 +50,22 @@ export default function WorkoutScreen() {
         size="square"
         theme="neutral"
         onPress={() => router.back()}
-        style={{ position: "absolute", zIndex: 1, top: 40, left: 20 }}
+        style={{
+          position: "absolute",
+          zIndex: 1,
+          top: spacing[12],
+          left: spacing[5],
+        }}
       >
         <Entypo name="chevron-left" size={24} color="white" />
       </Button>
       <View>
         <View
           style={[
-            { height: headerHeight, backgroundColor: colors.orange[600] },
+            { height: headerHeight, backgroundColor: colors.blue[700] },
             container,
           ]}
-        ></View>
+        />
 
         <WorkoutOverview workout={workout} />
       </View>
