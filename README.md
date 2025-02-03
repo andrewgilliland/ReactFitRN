@@ -39,7 +39,7 @@ eas build --profile development --platform ios
 
 [EAS CLI GitHub](https://github.com/expo/eas-cli)
 
-1. eas -h - gives Version, Usage, Topics, and Commands for eas-cli
+1. `eas -h` - gives Version, Usage, Topics, and Commands for eas-cli
 
 ## Common Errors
 
