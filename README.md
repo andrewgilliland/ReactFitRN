@@ -35,6 +35,12 @@ Next, run the build with the corresponding `--profile` and `--platform` flags. F
 eas build --profile development --platform ios
 ```
 
+### EAS CLI
+
+[EAS CLI GitHub](https://github.com/expo/eas-cli)
+
+1. eas -h - gives Version, Usage, Topics, and Commands for eas-cli
+
 ## Common Errors
 
 1. Pod install does not work and returns:
