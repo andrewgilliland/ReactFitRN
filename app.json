@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.andrewgilliland.ReactFit"
+      "bundleIdentifier": "com.andrewgilliland.ReactFit",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -37,6 +40,14 @@
           "faceIDPermission": "Allow ReactFit to access your Face ID biometric data."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "da3dfdd8-854c-4838-81b5-9e4cfb791511"
+      }
+    }
   }
 }
