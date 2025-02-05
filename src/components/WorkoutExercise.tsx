@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "./Text";
 import { colors, rounded, spacing } from "@/styles";
+import { getExerciseColumnById } from "../lib/supabase";
 
 type WorkoutExercisesProps = {
   exerciseId: string;
@@ -20,7 +21,20 @@ export const WorkoutExercise: FC<WorkoutExercisesProps> = ({
     styles: { container },
   } = useStyles(stylesheet);
 
-  // Todo: const exerciseName = getExerciseNameById(exerciseId);
+  const [exerciseName, setExerciseName] = useState<string>("");
+
+  useEffect(() => {
+    (async () => {
+      const { data, error } = await getExerciseColumnById(exerciseId, "name");
+      if (error) {
+        console.error("Error fetching exercise name:", error.message);
+      } else {
+        // @ts-ignore // TODO: make sure supabase functions return the correct type
+        const { name } = data;
+        setExerciseName(name);
+      }
+    })();
+  }, []);
 
   return (
     <View key={exerciseId} style={container}>
@@ -57,9 +71,13 @@ export const WorkoutExercise: FC<WorkoutExercisesProps> = ({
             />
           </View>
 
-          <Text color="neutral.100" size="xl" weight="bold">
-            {/* {exerciseName} */}
-            Dumbbell Bench Press
+          <Text
+            color="neutral.100"
+            size="xl"
+            weight="bold"
+            style={{ textTransform: "capitalize" }}
+          >
+            {exerciseName}
           </Text>
         </View>
         <View

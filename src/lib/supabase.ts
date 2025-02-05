@@ -51,5 +51,8 @@ export const getAllExercises = async () =>
 export const getExerciseById = async (id: string) =>
   await supabase.from("exercises").select("*").eq("id", id).single();
 
+export const getExerciseColumnById = async (id: string, column: string) =>
+  await supabase.from("exercises").select(column).eq("id", id).single();
+
 export const getWorkoutById = async (id: string) =>
   await supabase.from("workouts").select("*").eq("id", id).single();

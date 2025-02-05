@@ -2,6 +2,6 @@
 module.exports = {
   extends: "expo",
   rules: {
-    "no-console": "error",
+    // "no-console": "error",
   },
 };

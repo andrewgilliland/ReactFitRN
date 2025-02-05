@@ -18,12 +18,17 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
     styles: { container },
   } = useStyles(stylesheet);
 
-  const { sets, type, title, description } = workout;
+  const { type, name, description, exercise_sets } = workout;
 
-  const setCount = Object.values(sets).reduce(
+  const setCount = Object.values(exercise_sets).reduce(
     (acc, sets) => acc + sets.length,
     0
   );
+
+  const totalTime = () => {
+    const timePerSet = 2; // 2 minutes per set
+    return setCount * timePerSet;
+  };
 
   return (
     <View style={container}>
@@ -34,7 +39,7 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
         size="3xl"
         style={{ marginTop: spacing[6], textTransform: "capitalize" }}
       >
-        {title}
+        {name}
       </Text>
       <View
         style={{
@@ -72,7 +77,10 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
           }}
         >
           <AntDesign name="clockcircle" size={18} color={colors.blue[700]} />
-          <Text color="neutral.400" weight="semibold">{`30min`}</Text>
+          <Text
+            color="neutral.400"
+            weight="semibold"
+          >{`${totalTime()}min`}</Text>
         </View>
       </View>
 
@@ -91,7 +99,7 @@ export const WorkoutOverview: FC<WorkoutOverviewProps> = ({ workout }) => {
           {description}
         </Text>
       </View>
-      <WorkoutExercises workoutExercises={sets} />
+      <WorkoutExercises workoutExercises={exercise_sets} />
     </View>
   );
 };

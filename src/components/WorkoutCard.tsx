@@ -17,12 +17,14 @@ type CardProps = {
 
 const WorkoutCard: FC<CardProps> = ({ workout }) => {
   const {
-    styles: { container, pill, linkButton, link, linkIcon },
+    styles: { container, pill },
   } = useStyles(stylesheet);
 
   // Get the number of sets in the workout
   // by countuing the number of objects in the arrays of sets
-  const setCount = Object.values(workout.sets).reduce(
+  const { exercise_sets } = workout;
+
+  const setCount = Object.values(exercise_sets).reduce(
     (acc, sets) => acc + sets.length,
     0
   );
@@ -49,7 +51,7 @@ const WorkoutCard: FC<CardProps> = ({ workout }) => {
       >
         <View>
           <Text color="neutral.100" size="2xl" weight="bold">
-            {workout.title}
+            {workout.name}
           </Text>
           <View
             style={{
@@ -98,26 +100,6 @@ const stylesheet = createStyleSheet(({ colors, spacing, rounded, name }) => ({
     borderRadius: rounded.lg,
     paddingHorizontal: spacing[3],
     paddingVertical: spacing[2],
-  },
-  linkButton: {
-    borderRadius: rounded.xl,
-    height: spacing[14],
-    width: spacing[14],
-    backgroundColor: colors.orange[600],
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-  },
-  link: {
-    position: "relative",
-    backgroundColor: "transparent",
-    height: "100%",
-    width: "100%",
-    zIndex: 9999,
-  },
-  linkIcon: {
-    position: "absolute",
-    zIndex: 100,
   },
 }));
 

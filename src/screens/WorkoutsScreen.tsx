@@ -9,12 +9,12 @@ const WorkoutsScreen = () => {
   const workouts: Workout[] = [
     {
       id: 1,
-      title: "Chest Day",
+      name: "Chest Day",
       description: "A workout focused on chest muscles",
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
-      exercises: [1, 2, 3],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -22,12 +22,12 @@ const WorkoutsScreen = () => {
     },
     {
       id: 2,
-      title: "Leg Day",
+      name: "Leg Day",
       description: "A workout focused on leg muscles",
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
-      exercises: [4, 5, 6],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -35,12 +35,12 @@ const WorkoutsScreen = () => {
     },
     {
       id: 3,
-      title: "Back Day",
+      name: "Back Day",
       description: "A workout focused on back muscles",
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
-      exercises: [7, 8, 9],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -48,12 +48,12 @@ const WorkoutsScreen = () => {
     },
     {
       id: 4,
-      title: "Arm Day",
+      name: "Arm Day",
       description: "A workout focused on arm muscles",
       type: "strength",
       equipment: ["barbell", "dumbbell", "bodyweight"],
-      exercises: [10, 11, 12],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -61,12 +61,12 @@ const WorkoutsScreen = () => {
     },
     {
       id: 5,
-      title: "Cardio Day",
+      name: "Cardio Day",
       description: "A workout focused on cardio",
       type: "cardio",
       equipment: ["bodyweight"],
-      exercises: [13, 14, 15],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -74,12 +74,12 @@ const WorkoutsScreen = () => {
     },
     {
       id: 6,
-      title: "Yoga",
+      name: "Yoga",
       description: "A workout focused on flexibility",
       type: "flexibility",
       equipment: ["bodyweight"],
-      exercises: [16, 17, 18],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -87,12 +87,12 @@ const WorkoutsScreen = () => {
     },
     {
       id: 7,
-      title: "Wind Sprints",
+      name: "Wind Sprints",
       description: "A workout focused on speed",
       type: "cardio",
       equipment: ["bodyweight"],
-      exercises: [19, 20, 21],
-      sets: {
+
+      exercise_sets: {
         1: [{ reps: 15 }, { reps: 12 }, { reps: 10 }, { reps: 8 }],
         2: [{ reps: 10 }, { reps: 10 }, { reps: 10 }, { reps: 10 }],
         3: [{ reps: 12 }, { reps: 12 }, { reps: 12 }, { reps: 12 }],
@@ -101,7 +101,7 @@ const WorkoutsScreen = () => {
   ];
 
   const filteredWorkouts = workouts.filter((workout) =>
-    workout.title.toLowerCase().includes(searchValueState[0].toLowerCase())
+    workout.name.toLowerCase().includes(searchValueState[0].toLowerCase())
   );
 
   return (
