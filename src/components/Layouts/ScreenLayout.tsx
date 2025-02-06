@@ -17,7 +17,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
   searchValueState,
 }) => {
   const {
-    styles: { searchInputContainer, childrenContainer },
+    styles: { searchInputContainer },
   } = useStyles(stylesheet);
 
   return (
@@ -30,7 +30,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
           />
         </View>
       </View>
-      <View style={childrenContainer}>{children}</View>
+      <View>{children}</View>
     </SafeAreaView>
   );
 };
@@ -39,8 +39,9 @@ const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
   searchInputContainer: {
     paddingHorizontal: spacing[9],
     paddingVertical: spacing[4],
+    borderBottomWidth: 1,
+    borderBottomColor: colors.neutral[800],
   },
-  childrenContainer: {},
 }));
 
 export default ScreenLayout;

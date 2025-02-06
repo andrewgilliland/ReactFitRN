@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { ScrollView, View } from "react-native";
+import { SectionList, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { Text } from "./Text";
 import { Workout, WorkoutDictionary } from "@/types";
-import WorkoutList from "./WorkoutList";
 import { spacing } from "../styles";
+import WorkoutCard from "./WorkoutCard";
 
 type WorkoutListCollectionProps = {
   workouts: Workout[];
@@ -14,7 +14,7 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
   workouts,
 }) => {
   const {
-    styles: { container },
+    styles: { contentContainer },
   } = useStyles(stylesheet);
 
   /** An object with the workouts 
@@ -28,27 +28,38 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
     return acc;
   }, {});
 
+  const workoutsByTypeTitle = Object.entries(workoutsByType).map(
+    ([title, data]) => ({
+      title,
+      data,
+    })
+  );
+
   return (
-    <ScrollView>
-      {Object.entries(workoutsByType).map(([type, workouts]) => (
-        <View style={container}>
-          <Text
-            size="2xl"
-            weight="semibold"
-            style={{ textTransform: "capitalize", marginLeft: spacing[9] }}
-          >
-            {type}
-          </Text>
-          <WorkoutList workouts={workouts} />
-        </View>
-      ))}
-    </ScrollView>
+    <SectionList
+      sections={workoutsByTypeTitle}
+      keyExtractor={(item) => item.id.toString()}
+      contentContainerStyle={contentContainer}
+      renderItem={({ item }) => <WorkoutCard workout={item} />}
+      renderSectionHeader={({ section: { title } }) => (
+        <Text
+          size="2xl"
+          weight="semibold"
+          style={{ textTransform: "capitalize", marginVertical: spacing[3] }}
+        >
+          {title}
+        </Text>
+      )}
+      ItemSeparatorComponent={() => <View style={{ height: spacing[3] }} />}
+      stickySectionHeadersEnabled={false}
+    />
   );
 };
 
 const stylesheet = createStyleSheet(({ spacing }) => ({
-  container: {
-    marginVertical: spacing[3],
+  contentContainer: {
+    paddingHorizontal: spacing[9],
+    paddingVertical: spacing[4],
   },
 }));
 
