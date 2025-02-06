@@ -35,7 +35,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, fontSize, spacing, name }) => ({
+const stylesheet = createStyleSheet(({ colors, spacing }) => ({
   searchInputContainer: {
     paddingHorizontal: spacing[9],
     paddingVertical: spacing[4],

@@ -1,15 +1,14 @@
 import { FC } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { Workout } from "../types";
 import { Text } from "./Text";
-import { spacing } from "../styles";
-import { workout } from "../types/Workout";
-import { Link, router } from "expo-router";
-import Feather from "@expo/vector-icons/Feather";
+import { colors, spacing } from "../styles";
+import { router } from "expo-router";
 import { Button } from "./Button";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Pill } from "./Pill";
 
 type CardProps = {
   workout: Workout;
@@ -17,7 +16,7 @@ type CardProps = {
 
 const WorkoutCard: FC<CardProps> = ({ workout }) => {
   const {
-    styles: { container, pill },
+    styles: { container },
   } = useStyles(stylesheet);
 
   // Get the number of sets in the workout
@@ -31,16 +30,10 @@ const WorkoutCard: FC<CardProps> = ({ workout }) => {
 
   return (
     <View style={container}>
-      <View style={pill}>
-        <Text
-          color="neutral.100"
-          size="sm"
-          weight="medium"
-          style={{ textTransform: "capitalize" }}
-        >
-          {workout.type}
-        </Text>
-      </View>
+      <Pill theme="neutral" style={{ alignSelf: "flex-start" }}>
+        {workout.type}
+      </Pill>
+
       <View
         style={{
           flexDirection: "row",
@@ -60,12 +53,40 @@ const WorkoutCard: FC<CardProps> = ({ workout }) => {
               gap: spacing[4],
             }}
           >
-            <Text color="neutral.300" size="base" weight="medium">
-              {`${setCount} sets`}
-            </Text>
-            <Text color="neutral.300" size="base" weight="medium">
-              30min
-            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: spacing[1],
+              }}
+            >
+              <MaterialCommunityIcons
+                name="dumbbell"
+                size={18}
+                color={colors.orange[600]}
+              />
+              <Text color="neutral.400" weight="semibold">
+                {`${setCount} sets`}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: spacing[1],
+              }}
+            >
+              <AntDesign
+                name="clockcircle"
+                size={18}
+                color={colors.blue[700]}
+              />
+              <Text color="neutral.400" weight="semibold">
+                30min
+              </Text>
+            </View>
           </View>
         </View>
 

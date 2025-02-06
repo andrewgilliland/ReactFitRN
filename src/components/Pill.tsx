@@ -6,7 +6,7 @@ import { colors } from "@/styles";
 
 type PillProps = {
   style?: StyleProp<ViewStyle>;
-  theme?: "primary" | "secondary";
+  theme?: "primary" | "secondary" | "neutral";
   children: ReactNode;
 };
 
@@ -25,6 +25,11 @@ export const Pill: FC<PillProps> = ({ style, theme = "primary", children }) => {
       textColor: colors.blue[600],
       backgroundColor: colors.blue[950],
       shadowColor: colors.blue[900],
+    },
+    neutral: {
+      textColor: colors.neutral[100],
+      backgroundColor: colors.neutral[600],
+      shadowColor: colors.neutral[500],
     },
   };
 

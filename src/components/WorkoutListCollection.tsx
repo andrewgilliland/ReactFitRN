@@ -45,7 +45,11 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
         <Text
           size="2xl"
           weight="semibold"
-          style={{ textTransform: "capitalize", marginVertical: spacing[3] }}
+          style={{
+            textTransform: "capitalize",
+            marginTop: spacing[6],
+            marginBottom: spacing[3],
+          }}
         >
           {title}
         </Text>
@@ -59,7 +63,8 @@ const WorkoutListCollection: FC<WorkoutListCollectionProps> = ({
 const stylesheet = createStyleSheet(({ spacing }) => ({
   contentContainer: {
     paddingHorizontal: spacing[9],
-    paddingVertical: spacing[4],
+    paddingTop: spacing[4],
+    paddingBottom: spacing[48],
   },
 }));
 
